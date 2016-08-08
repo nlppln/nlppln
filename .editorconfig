@@ -16,6 +16,6 @@ charset = utf-8
 indent_style = space
 indent_size = 4
 
-[*.{cwl,yml}]
+[*.{cwl,yml,md}]
 indent_style = space
 indent_size = 2
