@@ -1,5 +1,7 @@
 *.pyc
 *.egg-info
 
+# data
 *.txt
 *.out
+*.csv
