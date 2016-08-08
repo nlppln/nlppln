@@ -1,4 +1,4 @@
-# NLP pipline
+# NLP Pipeline
 
 A python package to create NLP pipelines using [Common Workflow Language](http://www.commonwl.org/) (CWL).
 
