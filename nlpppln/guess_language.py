@@ -6,10 +6,10 @@ import pandas as pd
 
 from xtas.tasks.single import guess_language
 
+
 @click.command()
 @click.argument('input_dir', type=click.Path(exists=True))
 @click.argument('output_file', type=click.Path())
-
 def guess(input_dir, output_file):
     output_dir = os.path.dirname(output_file)
     if not os.path.exists(output_dir):
