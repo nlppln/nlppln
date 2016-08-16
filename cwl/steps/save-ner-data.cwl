@@ -7,10 +7,12 @@ arguments:
     position: 2
 
 inputs:
-  - id: dir_in
-    type: Directory
-    inputBinding:
-      position: 1
+- id: in_files
+  type:
+    type: array
+    items: File
+  inputBinding:
+    position: 1
 outputs:
   - id: ner_statistics
     type: File

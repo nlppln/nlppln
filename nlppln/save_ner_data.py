@@ -7,18 +7,17 @@ import pandas as pd
 
 
 @click.command()
-@click.argument('input_dir', type=click.Path(exists=True))
-@click.argument('output_file', type=click.Path())
-def nerstats(input_dir, output_file):
+@click.argument('input_files', nargs=-1, type=click.Path(exists=True))
+@click.argument('output_file', nargs=1, type=click.Path())
+def nerstats(input_files, output_file):
     output_dir = os.path.dirname(output_file)
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     frames = []
 
-    files = os.listdir(input_dir)
-    for fi in files:
-        with codecs.open(os.path.join(input_dir, fi), encoding='utf-8') as f:
+    for fi in input_files:
+        with codecs.open(fi, encoding='utf-8') as f:
             saf = json.load(f)
         data = {}
         data['word'] = [t['word'] for t in saf['tokens'] if 'ne' in t.keys()]

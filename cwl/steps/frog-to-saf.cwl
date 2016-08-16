@@ -7,8 +7,10 @@ arguments:
     position: 2
 
 inputs:
-  - id: dir_in
-    type: Directory
+  - id: in_files
+    type:
+      type: array
+      items: File
     inputBinding:
       position: 1
 outputs:
