@@ -21,8 +21,9 @@ def frog2saf(input_files, output_dir):
         saf_data = frog_to_saf(parse_frog(lines))
 
         head, tail = os.path.split(fi)
+        fname = tail.replace(os.path.splitext(tail)[1], '')
 
-        out_file = os.path.join(output_dir, '{}.json'.format(tail))
+        out_file = os.path.join(output_dir, '{}.json'.format(fname))
         with codecs.open(out_file, 'wb', encoding='utf-8') as f:
             json.dump(saf_data, f, indent=4)
 
