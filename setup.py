@@ -7,7 +7,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 setup(
-    name='nlpppln',
+    name='nlppln',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -19,7 +19,7 @@ setup(
 """,
 
     # The project's main homepage.
-    url='https://github.com/WhatWorksWhenForWhom/nlpppln',
+    url='https://github.com/WhatWorksWhenForWhom/nlppln',
 
     # Author details
     author='Janneke van der Zwaan',

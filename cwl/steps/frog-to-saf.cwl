@@ -1,9 +1,9 @@
 #!/usr/bin/env cwl-runner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "nlpppln.frog_to_saf"]
+baseCommand: ["python", "-m", "nlppln.frog_to_saf"]
 arguments:
-  - valueFrom: $(runtime.outdir + '/saf/')
+  - valueFrom: $(runtime.outdir)
     position: 2
 
 inputs:
@@ -13,9 +13,8 @@ inputs:
       position: 1
 outputs:
   - id: saf
-    type: Directory
+    type:
+      type: array
+      items: File
     outputBinding:
       glob: "*.json"
-
-requirements:
-  - class: InlineJavascriptRequirement
