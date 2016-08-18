@@ -37,7 +37,7 @@ outputs:
     type: array
     items: File
   outputBinding:
-    glob: "{{output_binding}}"
+    glob: "*.{{extension}}"
 {% endif %}
 {% if meta_out %}
 - id: metadata_out
