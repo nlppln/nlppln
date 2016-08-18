@@ -23,7 +23,8 @@ def nerstats(input_files, output_file):
         data['word'] = [t['word'] for t in saf['tokens'] if 'ne' in t.keys()]
         data['ner'] = [t['ne'] for t in saf['tokens'] if 'ne' in t.keys()]
         data['w_id'] = [t['id'] for t in saf['tokens'] if 'ne' in t.keys()]
-        data['text'] = [fi for t in saf['tokens'] if 'ne' in t.keys()]
+        data['text'] = [os.path.basename(fi)
+                        for t in saf['tokens'] if 'ne' in t.keys()]
 
         frames.append(pd.DataFrame(data=data))
 
