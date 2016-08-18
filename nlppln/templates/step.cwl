@@ -7,16 +7,16 @@ arguments:
 {% endif %}
 {% if outputs %}
   - valueFrom: $(runtime.outdir)
-    position: {% if meta_in %}3{% else %}2{% endif %}
+    position: 3
 {% endif %}
 {% if meta_out %}
   - valueFrom: $(runtime.outdir)/{{meta_out_file}}
-    position: 5
+    position: 4
 {% endif %}
 
 inputs:
 {% if meta_in %}
-- id: metadata
+- id: meta_in
   type: File
   inputBinding:
     position: 1
@@ -27,7 +27,7 @@ inputs:
     type: array
     items: File
   inputBinding:
-    position: {% if meta_in %}2{% else %}1{% endif %}
+    position: 2
 {% endif %}
 
 outputs:
