@@ -4,7 +4,8 @@ import os
 import codecs
 
 from jinja2 import Environment, PackageLoader
-env = Environment(loader=PackageLoader('nlppln', 'templates'))
+env = Environment(loader=PackageLoader('nlppln', 'templates'),
+                  trim_blocks=True)
 
 
 def to_bool(v):

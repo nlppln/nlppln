@@ -1,7 +1,7 @@
 #!/usr/bin/env cwlrunner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "m", "nlppln.{{command_name}}"]
+baseCommand: ["python", "-m", "nlppln.{{command_name}}"]
 {% if outputs or meta_out %}
 arguments:
 {% endif %}
@@ -13,6 +13,7 @@ arguments:
   - valueFrom: $(runtime.outdir)/{{meta_out_file}}
     position: 5
 {% endif %}
+
 inputs:
 {% if meta_in %}
 - id: metadata
@@ -28,6 +29,7 @@ inputs:
   inputBinding:
     position: {% if meta_in %}2{% else %}1{% endif %}
 {% endif %}
+
 outputs:
 {% if outputs %}
 - id: out_files
