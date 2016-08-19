@@ -11,7 +11,7 @@ def remove_ext(fname):
 def create_dirs(fname):
     """Create (output) directories if they don't exist
     """
-    fname = os.path.dirname(fname)
+    fname = os.path.dirname(os.path.abspath(fname))
 
     if not os.path.exists(fname):
         os.makedirs(fname)
