@@ -5,3 +5,5 @@
 *.txt
 *.out
 *.csv
+
+!requirements.txt
