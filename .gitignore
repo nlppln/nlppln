@@ -7,3 +7,5 @@
 *.csv
 
 !requirements.txt
+
+bower_components

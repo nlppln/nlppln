@@ -1,0 +1,21 @@
+{
+  "name": "nlppln-gui",
+  "homepage": "https://github.com/WhatWorksWhenForWhom/nlppln",
+  "authors": [
+    "Janneke van der Zwaan <j.vanderzwaan@esciencecenter.nl>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "Apache 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "datatables.net-bs": "^1.10.12",
+    "datatables.net": "^1.10.12"
+  }
+}
