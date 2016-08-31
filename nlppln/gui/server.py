@@ -1,13 +1,15 @@
 import pandas as pd
 from codecs import open
 
-from flask import Flask, request, render_template
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
+from flask_bower import Bower
 
 
 app = Flask(__name__)
 Bootstrap(app)
-app.config['meta_in'] = '/Users/janneke/Downloads/cwl/ner-statistics.csv'
+Bower(app)
+app.config['meta_in'] = '/home/jvdzwaan/data/tmp/ner-statistics.csv'
 
 
 @app.route('/named_entities')
@@ -17,12 +19,14 @@ def named_entities_overview():
         df = pd.read_csv(f, index_col=0)
 
     df = df.fillna('NE')
-    df = df.groupby('text')
+    gr = df.groupby('text')
 
-    print df.groups.keys()
-    for group in df.groups.keys():
-        print df.get_group(group)
-    return render_template('named_entities.html', texts=df.groups.keys())
+    print gr.groups.keys()
+    for group in gr.groups.keys():
+        print gr.get_group(group)
+    return render_template('named_entities.html', texts=gr.groups.keys(),
+                           num_named_entities=len(df),
+                           data=df.to_json(orient='records'))
 
 
 if __name__ == '__main__':
