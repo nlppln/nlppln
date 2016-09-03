@@ -6,7 +6,7 @@
   <script src="static/bower_components/angular-resource/angular-resource.js"></script>
   <script src="static/bower_components/angular-route/angular-route.js"></script>
   <script src="static/bower_components/angular-ui-date/src/date.js"></script>
-  <script src="static/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="static/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="static/bower_components/jquery/dist/jquery.js"></script>
   <script src="static/bower_components/lodash/dist/lodash.js"></script>
   <script src="static/bower_components/datatables.net/js/jquery.dataTables.js"></script>
@@ -30,10 +30,18 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Named Entities</h1>
-        <p>Found {{ ne.numNamedEntities | angular }} named entities in {{ ne.numTexts | angular }} texts.</p>
 
-        <table id="nerdata" class="table table-striped table-bordered" cellspacing="0" width="100%">
-        </table>
+        <tabset active="active">
+          <tab index="0" heading="Overview">
+            <p>Found {{ ne.numNamedEntities | angular }} named entities in {{ ne.numTexts | angular }} texts.</p>
+
+            <table id="nerdata" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            </table>
+          </tab>
+
+          <tab index="1" heading="Text">
+          </tab>
+        </tabset>
 
       </div>
     </div>
