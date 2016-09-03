@@ -1,12 +1,10 @@
-import pandas as pd
-from codecs import open
-
 from flask import Flask, render_template
 from flask.json import jsonify
 from flask_bootstrap import Bootstrap
 from flask_bower import Bower
 from flask_triangle import Triangle
 
+from utils import load_ner_csv
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -27,24 +25,14 @@ def index():
 
 @app.route('/named_entities')
 def named_entities():
-    meta_in = app.config.get('meta_in')
-
-    with open(meta_in, encoding='utf-8') as f:
-        df = pd.read_csv(f, index_col=0)
-
-    df = df.fillna('NE')
+    df = load_ner_csv(app.config.get('meta_in'))
 
     return jsonify(data=df.to_dict(orient='records'))
 
 
 @app.route('/texts')
 def texts():
-    meta_in = app.config.get('meta_in')
-
-    with open(meta_in, encoding='utf-8') as f:
-        df = pd.read_csv(f, index_col=0)
-
-    print list(set(df['text']))
+    df = load_ner_csv(app.config.get('meta_in'))
 
     return jsonify(data=list(set(df['text'])))
 
