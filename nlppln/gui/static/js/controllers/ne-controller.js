@@ -8,6 +8,8 @@ angular
     neCtrl.numNamedEntities = 0;
     neCtrl.numTexts = 0;
 
+    neCtrl.tokens = [];
+
     neCtrl.render = function () {
       neService.namedEntities().then(function (data) {
         //console.log(data);
@@ -32,6 +34,14 @@ angular
         //console.log(data);
         neCtrl.numTexts = data.data.data.length;
       });
+
+      // Get text + ner info to display
+      neService.getText().then(function (data) {
+        console.log(data);
+        neCtrl.tokens = data.data.data;
+      });
+
+
     };
 
     neCtrl.render();

@@ -1,4 +1,7 @@
 import pandas as pd
+from codecs import open
+import json
+import os
 
 from flask import Flask, render_template
 from flask.json import jsonify
@@ -13,6 +16,7 @@ Bootstrap(app)
 Bower(app)
 Triangle(app)
 app.config['meta_in'] = '/home/jvdzwaan/data/tmp/ner-statistics.csv'
+app.config['in_files'] = '/home/jvdzwaan/data/tmp/cwl/saf/'
 
 
 @app.route('/')
@@ -56,6 +60,15 @@ def overview_named_entities():
     columns = ['NE', 'ORG', 'LOC', 'PER']
     r[columns] = r[columns].astype(int)
     return jsonify(data=r.to_dict(orient='records'))
+
+
+@app.route('/text')
+def get_text():
+    text = os.path.join(app.config.get('in_files'), 'm2-20160726.txt.out.json')
+    with open(text, encoding='utf-8') as f:
+        saf = json.load(f)
+
+    return jsonify(data=saf.get('tokens'))
 
 
 if __name__ == '__main__':

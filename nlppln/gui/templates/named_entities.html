@@ -40,6 +40,9 @@
           </tab>
 
           <tab index="1" heading="Text">
+            <span ng-repeat="token in ne.tokens">
+              {{ token.word | angular }}
+            </span>
           </tab>
         </tabset>
 
