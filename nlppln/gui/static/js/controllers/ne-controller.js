@@ -13,13 +13,17 @@ angular
         //console.log(data);
 
         neCtrl.numNamedEntities = data.data.data.length;
+      });
 
+      neService.overviewNamedEntities().then(function (data) {
         $('#nerdata').DataTable({
           data: data.data.data,
           columns: [
             { 'data': 'text', 'title': 'Text' },
-            { 'data': 'word', 'title': 'Word' },
-            { 'data': 'ner', 'title': 'NE Type' }
+            { 'data': 'PER', 'title': 'Person' },
+            { 'data': 'LOC', 'title': 'Location' },
+            { 'data': 'ORG', 'title': 'Organization' },
+            { 'data': 'NE', 'title': 'Unspecified' }
           ]
         });
       });

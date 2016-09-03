@@ -1,3 +1,5 @@
+import pandas as pd
+
 from flask import Flask, render_template
 from flask.json import jsonify
 from flask_bootstrap import Bootstrap
@@ -35,6 +37,25 @@ def texts():
     df = load_ner_csv(app.config.get('meta_in'))
 
     return jsonify(data=list(set(df['text'])))
+
+
+@app.route('/overview_named_entities')
+def overview_named_entities():
+    df = load_ner_csv(app.config.get('meta_in'))
+
+    grouped = df.groupby(['text', 'ner'])
+    df = grouped.count()
+    df = df.drop('w_id', 1)
+    df.columns = ['count']
+
+    texts = list(set([text for text, _ in df.index]))
+    result = pd.concat([df.loc[t] for t in texts], axis=1)
+    result = result.fillna(0)
+    r = result.T
+    r['text'] = texts
+    columns = ['NE', 'ORG', 'LOC', 'PER']
+    r[columns] = r[columns].astype(int)
+    return jsonify(data=r.to_dict(orient='records'))
 
 
 if __name__ == '__main__':

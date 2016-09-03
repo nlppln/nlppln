@@ -9,7 +9,8 @@ neService.$inject = ['$http'];
 function neService($http) {
   var service = {
     namedEntities: namedEntities,
-    texts: texts
+    texts: texts,
+    overviewNamedEntities: overviewNamedEntities
   };
 
   function namedEntities() {
@@ -19,6 +20,11 @@ function neService($http) {
 
   function texts() {
     var url = '/texts';
+    return $http.get(url);
+  }
+
+  function overviewNamedEntities() {
+    var url = '/overview_named_entities';
     return $http.get(url);
   }
 
