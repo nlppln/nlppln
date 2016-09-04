@@ -54,6 +54,18 @@ angular
         console.log(neCtrl.sentences);
       });
 
+      neService.namedEntitiesText().then(function (data) {
+        console.log(data);
+        $('#nertext').DataTable({
+          data: data.data.data,
+          columns: [
+            { 'data': 'ner', 'title': 'NE type' },
+            { 'data': 'word', 'title': 'Word(s)' },
+            { 'data': 'w_id', 'title': 'Frequency' }
+          ]
+        });
+      });
+
     };
 
     neCtrl.render();

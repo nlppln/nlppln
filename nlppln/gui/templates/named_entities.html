@@ -34,11 +34,19 @@
 
         <tabset active="active">
           <tab index="1" heading="Text">
-            <div ng-repeat="s in ne.sentences">
-              <span ng-repeat="token in s.values">
-                <span ng-style="neColor(token);">{{ token.word | angular }}</span> 
-              </span>
-              <br/>
+            <div class="row">
+              <div class="col-md-7">
+                <div ng-repeat="s in ne.sentences">
+                  <span ng-repeat="token in s.values">
+                    <span ng-style="neColor(token);">{{ token.word | angular }}</span>
+                  </span>
+                  <br/>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <table id="nertext" class="table table-bordered" cellspacing="0">
+                </table>
+              </div>
             </div>
           </tab>
 

@@ -71,5 +71,19 @@ def get_text():
     return jsonify(data=saf.get('tokens'))
 
 
+@app.route('/named_entities_text')
+def named_entities_text():
+    text = 'm2-20160726.txt.out.json'
+    df = load_ner_csv(app.config.get('meta_in'))
+    # filter data
+    df = df[df['text'] == text]
+    grouped = df.groupby(['word', 'ner'])
+    df = grouped.count()
+    df['word'] = df.index.get_level_values('word')
+    df['ner'] = df.index.get_level_values('ner')
+
+    return jsonify(data=df.to_dict(orient='records'))
+
+
 if __name__ == '__main__':
     app.run(debug=True)

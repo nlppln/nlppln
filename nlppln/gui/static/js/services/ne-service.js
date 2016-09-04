@@ -11,7 +11,8 @@ function neService($http) {
     namedEntities: namedEntities,
     texts: texts,
     overviewNamedEntities: overviewNamedEntities,
-    getText: getText
+    getText: getText,
+    namedEntitiesText: namedEntitiesText
   };
 
   function namedEntities() {
@@ -31,6 +32,10 @@ function neService($http) {
 
   function getText() {
     return $http.get('text');
+  }
+
+  function namedEntitiesText() {
+    return $http.get('/named_entities_text');
   }
 
   return service;
