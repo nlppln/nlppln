@@ -8,7 +8,7 @@ angular
     neCtrl.numNamedEntities = 0;
     neCtrl.numTexts = 0;
 
-    neCtrl.tokens = [];
+    neCtrl.sentences = [];
 
     neCtrl.render = function () {
       neService.namedEntities().then(function (data) {
@@ -37,10 +37,12 @@ angular
 
       // Get text + ner info to display
       neService.getText().then(function (data) {
-        console.log(data);
-        neCtrl.tokens = data.data.data;
+        //console.log(data);
+        neCtrl.sentences = d3.nest()
+          .key(function(d) { return d.sentence; })
+          .entries(data.data.data);
+        console.log(neCtrl.sentences);
       });
-
 
     };
 

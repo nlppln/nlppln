@@ -33,6 +33,15 @@
         <h1>Named Entities</h1>
 
         <tabset active="active">
+          <tab index="1" heading="Text">
+            <div ng-repeat="s in ne.sentences">
+              <span ng-repeat="token in s.values">
+                {{ token.word | angular }}
+              </span>
+              <br/>
+            </div>
+          </tab>
+
           <tab index="0" heading="Overview">
             <p>Found {{ ne.numNamedEntities | angular }} named entities in {{ ne.numTexts | angular }} texts.</p>
 
@@ -40,11 +49,7 @@
             </table>
           </tab>
 
-          <tab index="1" heading="Text">
-            <span ng-repeat="token in ne.tokens">
-              {{ token.word | angular }}
-            </span>
-          </tab>
+
         </tabset>
 
       </div>
