@@ -8,6 +8,16 @@ angular
     neCtrl.numNamedEntities = 0;
     neCtrl.numTexts = 0;
 
+    var color = d3.scaleOrdinal(d3.schemeCategory10)
+      .domain(['PER', 'LOC', 'ORG', 'NE']);
+
+    $scope.neColor = function(token) {
+      if('ne' in token){
+        return {'background-color': color(token.ne)};
+      }
+      return {};
+    };
+
     neCtrl.sentences = [];
 
     neCtrl.render = function () {
