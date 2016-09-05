@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from codecs import open
 import json
 import os
@@ -59,8 +60,9 @@ def overview_named_entities():
     r['text'] = texts
     columns = ['', 'ORG', 'LOC', 'PER']
     r[columns] = r[columns].astype(int)
+    num_ne = np.sum(r[columns].values)
     r['total'] = r.sum(axis=1)
-    return jsonify(data=r.to_dict(orient='records'))
+    return jsonify(data=r.to_dict(orient='records'), texts=texts, nes=num_ne)
 
 
 @app.route('/text')

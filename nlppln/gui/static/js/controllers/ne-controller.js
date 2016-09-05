@@ -21,13 +21,10 @@ angular
     neCtrl.sentences = [];
 
     neCtrl.render = function () {
-      neService.namedEntities().then(function (data) {
-        //console.log(data);
-
-        neCtrl.numNamedEntities = data.data.data.length;
-      });
-
       neService.overviewNamedEntities().then(function (data) {
+        neCtrl.numNamedEntities = data.data.nes;
+        neCtrl.numTexts = data.data.texts.length;
+
         $('#nerdata').DataTable({
           data: data.data.data,
           columns: [
@@ -44,11 +41,6 @@ angular
         $('#nerdata').find('th.LOC').css('background-color', color('LOC'));
         $('#nerdata').find('th.ORG').css('background-color', color('ORG'));
         $('#nerdata').find('th.UNSP').css('background-color', color(''));
-      });
-
-      neService.texts().then(function (data) {
-        //console.log(data);
-        neCtrl.numTexts = data.data.data.length;
       });
 
       // Get text + ner info to display
