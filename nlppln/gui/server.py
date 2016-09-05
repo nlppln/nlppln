@@ -57,7 +57,7 @@ def overview_named_entities():
     result = result.fillna(0)
     r = result.T
     r['text'] = texts
-    columns = ['NE', 'ORG', 'LOC', 'PER']
+    columns = ['', 'ORG', 'LOC', 'PER']
     r[columns] = r[columns].astype(int)
     return jsonify(data=r.to_dict(orient='records'))
 

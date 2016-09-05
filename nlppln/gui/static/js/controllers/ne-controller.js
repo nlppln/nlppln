@@ -9,7 +9,7 @@ angular
     neCtrl.numTexts = 0;
 
     var color = d3.scaleOrdinal(d3.schemeCategory10)
-      .domain(['PER', 'LOC', 'ORG', 'NE']);
+      .domain(['PER', 'LOC', 'ORG', '']);
 
     $scope.neColor = function(token) {
       if('ne' in token){
@@ -32,12 +32,17 @@ angular
           data: data.data.data,
           columns: [
             { 'data': 'text', 'title': 'Text' },
-            { 'data': 'PER', 'title': 'Person' },
-            { 'data': 'LOC', 'title': 'Location' },
-            { 'data': 'ORG', 'title': 'Organization' },
-            { 'data': 'NE', 'title': 'Unspecified' }
+            { 'data': 'PER', 'title': 'Person', 'class': 'PER' },
+            { 'data': 'LOC', 'title': 'Location', 'class': 'LOC' },
+            { 'data': 'ORG', 'title': 'Organization', 'class': 'ORG' },
+            { 'data': '', 'title': 'Unspecified', 'class': 'UNSP' }
           ]
         });
+
+        $('#nerdata').find('th.PER').css('background-color', color('PER'));
+        $('#nerdata').find('th.LOC').css('background-color', color('LOC'));
+        $('#nerdata').find('th.ORG').css('background-color', color('ORG'));
+        $('#nerdata').find('th.UNSP').css('background-color', color(''));
       });
 
       neService.texts().then(function (data) {
@@ -51,18 +56,21 @@ angular
         neCtrl.sentences = d3.nest()
           .key(function(d) { return d.sentence; })
           .entries(data.data.data);
-        console.log(neCtrl.sentences);
+        //console.log(neCtrl.sentences);
       });
 
       neService.namedEntitiesText().then(function (data) {
-        console.log(data);
+        //console.log(data);
         $('#nertext').DataTable({
           data: data.data.data,
           columns: [
             { 'data': 'ner', 'title': 'NE type' },
             { 'data': 'word', 'title': 'Word(s)' },
             { 'data': 'w_id', 'title': 'Frequency' }
-          ]
+          ],
+          fnRowCallback: function (nRow, aData) {
+            $(nRow).css('background-color', color(aData.ner));
+          }
         });
       });
 
