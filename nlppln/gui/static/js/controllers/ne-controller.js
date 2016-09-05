@@ -35,7 +35,8 @@ angular
             { 'data': 'PER', 'title': 'Person', 'class': 'PER' },
             { 'data': 'LOC', 'title': 'Location', 'class': 'LOC' },
             { 'data': 'ORG', 'title': 'Organization', 'class': 'ORG' },
-            { 'data': '', 'title': 'Unspecified', 'class': 'UNSP' }
+            { 'data': '', 'title': 'Unspecified', 'class': 'UNSP' },
+            { 'data': 'total', 'title': 'Total' }
           ]
         });
 

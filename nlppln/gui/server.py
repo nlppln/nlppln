@@ -59,6 +59,7 @@ def overview_named_entities():
     r['text'] = texts
     columns = ['', 'ORG', 'LOC', 'PER']
     r[columns] = r[columns].astype(int)
+    r['total'] = r.sum(axis=1)
     return jsonify(data=r.to_dict(orient='records'))
 
 
