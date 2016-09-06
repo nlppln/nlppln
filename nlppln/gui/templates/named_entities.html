@@ -38,7 +38,28 @@
 
             <a href ng-click="loadText('m2-20160726.txt.out.json');">Load m2-20160726.txt.out.json</a>
 
-            <table id="nerdata" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table cdatatable="ng" class="table table-striped table-bordered"
+                   cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th>Text</th>
+                  <th ng-style="neColor({'ne': 'PER'});">Person</th>
+                  <th ng-style="neColor({'ne': 'LOC'});">Location</th>
+                  <th ng-style="neColor({'ne': 'ORG'});">Organization</th>
+                  <th ng-style="neColor({'ne': ''});">Unspecified</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="t in ne.neDataTexts">
+                  <td>{{ t.text | angular }}</td>
+                  <td>{{ t.PER | angular }}</td>
+                  <td>{{ t.LOC | angular }}</td>
+                  <td>{{ t.ORG | angular }}</td>
+                  <td>{{ t.NE | angular }}</td>
+                  <td>{{ t.total | angular }}</td>
+                </tr>
+              </tbody>
             </table>
           </uib-tab>
 

@@ -2,35 +2,41 @@
 
 angular
   .module('nlppln')
-  .controller('NEController', function ($scope, neService) {
+  .controller('NEController', function ($scope, neService, DTOptionsBuilder, DTColumnDefBuilder) {
     var neCtrl = this;
 
     neCtrl.numNamedEntities = 0;
     neCtrl.numTexts = 0;
     neCtrl.texts = [];
+    neCtrl.neDataTexts = [];
 
     $scope.loadText = function(text) {
       neService.loadText(text);
       $scope.active = 1;
     };
 
+    $scope.neColor = function(token) {
+      return neService.neColor(token);
+    }
+
     neCtrl.render = function () {
       neService.overviewNamedEntities().then(function (data) {
         neCtrl.numNamedEntities = data.data.nes;
         neCtrl.numTexts = data.data.texts.length;
         neCtrl.texts = data.data.texts;
+        neCtrl.neDataTexts = data.data.data;
 
-        $('#nerdata').DataTable({
-          data: data.data.data,
-          columns: [
-            { 'data': 'text', 'title': 'Text' },
-            { 'data': 'PER', 'title': 'Person', 'class': 'PER' },
-            { 'data': 'LOC', 'title': 'Location', 'class': 'LOC' },
-            { 'data': 'ORG', 'title': 'Organization', 'class': 'ORG' },
-            { 'data': '', 'title': 'Unspecified', 'class': 'UNSP' },
-            { 'data': 'total', 'title': 'Total' }
-          ]
-        });
+        //$('#nerdata').DataTable({
+        //  data: data.data.data,
+        //  columns: [
+        //    { 'data': 'text', 'title': 'Text' },
+        //    { 'data': 'PER', 'title': 'Person', 'class': 'PER' },
+        //    { 'data': 'LOC', 'title': 'Location', 'class': 'LOC' },
+        //    { 'data': 'ORG', 'title': 'Organization', 'class': 'ORG' },
+        //    { 'data': '', 'title': 'Unspecified', 'class': 'UNSP' },
+        //    { 'data': 'total', 'title': 'Total' }
+        //  ]
+        //});
 
         $('#nerdata').find('th.PER').css('background-color', neService.color('PER'));
         $('#nerdata').find('th.LOC').css('background-color', neService.color('LOC'));

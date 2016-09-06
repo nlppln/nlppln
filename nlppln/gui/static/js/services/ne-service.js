@@ -14,6 +14,7 @@ function neService($rootScope, $http) {
     getText: getText,
     namedEntitiesText: namedEntitiesText,
     loadText: loadText,
+    neColor: neColor,
     currentText: null,
     sentences: [],
     neDataText: [],
@@ -73,6 +74,13 @@ function neService($rootScope, $http) {
       //  }
       //});
     });
+  }
+
+  function neColor(token) {
+    if('ne' in token){
+      return {'background-color': service.color(token.ne)};
+    }
+    return {};
   }
 
   return service;

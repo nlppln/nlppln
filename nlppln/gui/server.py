@@ -58,7 +58,7 @@ def overview_named_entities():
     result = result.fillna(0)
     r = result.T
     r['text'] = texts
-    columns = ['', 'ORG', 'LOC', 'PER']
+    columns = ['NE', 'ORG', 'LOC', 'PER']
     r[columns] = r[columns].astype(int)
     num_ne = np.sum(r[columns].values)
     r['total'] = r.sum(axis=1)
