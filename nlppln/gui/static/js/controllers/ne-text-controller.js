@@ -19,29 +19,11 @@ angular
 
     $scope.$on('neDataText', function() {
       ctrl.neDataText = neService.neDataText;
+      console.log(ctrl.neDataText);
     });
 
     $scope.neColor = function(token) {
-      if('ne' in token){
-        return {'background-color': neService.color(token.ne)};
-      }
-      return {};
-    };
+      return neService.neColor(token);
+    }
 
-    ctrl.render = function () {
-      $('#nertext').DataTable({
-        data: ctrl.neDataText,
-        columns: [
-          { 'data': 'ner', 'title': 'NE type' },
-          { 'data': 'word', 'title': 'Word(s)' },
-          { 'data': 'w_id', 'title': 'Frequency' }
-        ],
-        fnRowCallback: function (nRow, aData) {
-          $(nRow).css('background-color', neService.color(aData.ner));
-        }
-      });
-
-    };
-
-    ctrl.render();
   });

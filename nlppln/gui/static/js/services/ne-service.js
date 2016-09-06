@@ -45,7 +45,6 @@ function neService($rootScope, $http) {
   }
 
   function loadText(text) {
-    console.log('loadText ' + text);
     service.currentText = text;
     $rootScope.$broadcast('currentText');
 
@@ -62,23 +61,16 @@ function neService($rootScope, $http) {
       //console.log(data);
       service.neDataText = data.data.data;
       $rootScope.$broadcast('neDataText');
-      //$('#nertext').DataTable({
-      //  data: data.data.data,
-      //  columns: [
-      //    { 'data': 'ner', 'title': 'NE type' },
-      //    { 'data': 'word', 'title': 'Word(s)' },
-      //    { 'data': 'w_id', 'title': 'Frequency' }
-      //  ],
-      //  fnRowCallback: function (nRow, aData) {
-      //    $(nRow).css('background-color', service.color(aData.ner));
-      //  }
-      //});
     });
   }
 
   function neColor(token) {
     if('ne' in token){
-      return {'background-color': service.color(token.ne)};
+      var type = token.ne;
+      if(type==='NE'){
+        type = '';
+      }
+      return {'background-color': service.color(type)};
     }
     return {};
   }

@@ -73,6 +73,20 @@
               </div>
               <div class="col-md-5">
                 <table id="nertext" class="table table-bordered" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>NE type</th>
+                      <th>Word(s)</th>
+                      <th>Frequency</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="e in net.neDataText">
+                      <td ng-style="neColor({'ne': e.ner});">{{ e.ner | angular }}</td>
+                      <td ng-style="neColor({'ne': e.ner});">{{ e.word | angular }}</td>
+                      <td ng-style="neColor({'ne': e.ner});">{{ e.text | angular }}</td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </div>
