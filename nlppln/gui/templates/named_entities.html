@@ -36,8 +36,6 @@
           <uib-tab index="0" heading="Overview">
             <p>Found {{ ne.numNamedEntities | angular }} named entities in {{ ne.numTexts | angular }} texts.</p>
 
-            <a href ng-click="loadText('m2-20160726.txt.out.json');">Load m2-20160726.txt.out.json</a>
-
             <table cdatatable="ng" class="table table-striped table-bordered"
                    cellspacing="0" width="100%">
               <thead>
@@ -52,7 +50,7 @@
               </thead>
               <tbody>
                 <tr ng-repeat="t in ne.neDataTexts">
-                  <td>{{ t.text | angular }}</td>
+                  <td><a href ng-click="loadText(t.text);">{{ t.text | angular }}</a></td>
                   <td>{{ t.PER | angular }}</td>
                   <td>{{ t.LOC | angular }}</td>
                   <td>{{ t.ORG | angular }}</td>
