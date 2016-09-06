@@ -11,30 +11,6 @@
 
 {% set active_page = active_page|default('runs') -%}
 
-{% block scripts %}
-  {{ super() }}
-  <script src="static/bower_components/jquery/dist/jquery.js"></script>
-  <script src="static/bower_components/datatables.net/js/jquery.dataTables.js"></script>
-  <script src="static/bower_components/datatables/media/js/dataTables.bootstrap.js"></script>
-  <script src="static/bower_components/angular/angular.js"></script>
-  <script src="static/bower_components/angular-resource/angular-resource.js"></script>
-  <script src="static/bower_components/angular-route/angular-route.js"></script>
-  <script src="static/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/angular-datatables.js"></script>
-  <script src="static/bower_components/d3/d3.js"></script>
-
-  <script src="static/js/app.js"></script>
-  <script src="static/js/controllers/ne-controller.js"></script>
-  <script src="static/js/services/ne-service.js"></script>
-
-{% endblock %}
-
-{% block styles %}
-{{super()}}
-<link rel="stylesheet"
-      href="static/bower_components/datatables/media/css/dataTables.bootstrap.css">
-{% endblock %}
-
 <nav class="navbar navbar-default">
   <div class="container" id="top">
     <div class="navbar-header">

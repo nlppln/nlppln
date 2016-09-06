@@ -11,4 +11,4 @@ var app = angular.module('nlppln', [
         templateUrl: 'views/named_entities.html',
         controller: 'NEController'})
       .otherwise({redirectTo: '/'});
-  }]);*/
+}]);*/
