@@ -47,6 +47,9 @@ angular
           }
         });
       });
+
+      $scope.active = 1;
+
     };
 
     neCtrl.render = function () {
