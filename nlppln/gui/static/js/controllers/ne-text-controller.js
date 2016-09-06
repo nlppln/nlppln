@@ -19,11 +19,6 @@ angular
 
     $scope.$on('neDataText', function() {
       ctrl.neDataText = neService.neDataText;
-      console.log(ctrl.neDataText);
     });
-
-    $scope.neColor = function(token) {
-      return neService.neColor(token);
-    }
 
   });

@@ -17,7 +17,7 @@ angular
 
     $scope.neColor = function(token) {
       return neService.neColor(token);
-    }
+    };
 
     neCtrl.render = function () {
       neService.overviewNamedEntities().then(function (data) {
@@ -25,25 +25,7 @@ angular
         neCtrl.numTexts = data.data.texts.length;
         neCtrl.texts = data.data.texts;
         neCtrl.neDataTexts = data.data.data;
-
-        //$('#nerdata').DataTable({
-        //  data: data.data.data,
-        //  columns: [
-        //    { 'data': 'text', 'title': 'Text' },
-        //    { 'data': 'PER', 'title': 'Person', 'class': 'PER' },
-        //    { 'data': 'LOC', 'title': 'Location', 'class': 'LOC' },
-        //    { 'data': 'ORG', 'title': 'Organization', 'class': 'ORG' },
-        //    { 'data': '', 'title': 'Unspecified', 'class': 'UNSP' },
-        //    { 'data': 'total', 'title': 'Total' }
-        //  ]
-        //});
-
-        $('#nerdata').find('th.PER').css('background-color', neService.color('PER'));
-        $('#nerdata').find('th.LOC').css('background-color', neService.color('LOC'));
-        $('#nerdata').find('th.ORG').css('background-color', neService.color('ORG'));
-        $('#nerdata').find('th.UNSP').css('background-color', neService.color(''));
       });
-
     };
 
     neCtrl.render();
