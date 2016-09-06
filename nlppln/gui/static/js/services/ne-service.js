@@ -4,15 +4,20 @@ angular
   .module('nlppln')
   .factory('neService', neService);
 
-neService.$inject = ['$http'];
+neService.$inject = ['$rootScope', '$http'];
 
-function neService($http) {
+function neService($rootScope, $http) {
   var service = {
     namedEntities: namedEntities,
     texts: texts,
     overviewNamedEntities: overviewNamedEntities,
     getText: getText,
-    namedEntitiesText: namedEntitiesText
+    namedEntitiesText: namedEntitiesText,
+    loadText: loadText,
+    currentText: null,
+    sentences: [],
+    neDataText: [],
+    color: d3.scaleOrdinal(d3.schemeCategory10).domain(['PER', 'LOC', 'ORG', ''])
   };
 
   function namedEntities() {
@@ -36,6 +41,38 @@ function neService($http) {
 
   function namedEntitiesText(text) {
     return $http.get('/named_entities_text/' + text);
+  }
+
+  function loadText(text) {
+    console.log('loadText ' + text);
+    service.currentText = text;
+    $rootScope.$broadcast('currentText');
+
+    // Get text + ner info to display
+    getText(text).then(function (data) {
+      //console.log(data);
+      service.sentences = d3.nest()
+        .key(function(d) { return d.sentence; })
+        .entries(data.data.data);
+      $rootScope.$broadcast('sentences');
+    });
+
+    namedEntitiesText(text).then(function (data) {
+      //console.log(data);
+      service.neDataText = data.data.data;
+      $rootScope.$broadcast('neDataText');
+      //$('#nertext').DataTable({
+      //  data: data.data.data,
+      //  columns: [
+      //    { 'data': 'ner', 'title': 'NE type' },
+      //    { 'data': 'word', 'title': 'Word(s)' },
+      //    { 'data': 'w_id', 'title': 'Frequency' }
+      //  ],
+      //  fnRowCallback: function (nRow, aData) {
+      //    $(nRow).css('background-color', service.color(aData.ner));
+      //  }
+      //});
+    });
   }
 
   return service;
