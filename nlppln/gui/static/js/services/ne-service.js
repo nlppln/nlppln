@@ -30,12 +30,12 @@ function neService($http) {
     return $http.get(url);
   }
 
-  function getText() {
-    return $http.get('text');
+  function getText(text) {
+    return $http.get('/text/' + text);
   }
 
-  function namedEntitiesText() {
-    return $http.get('/named_entities_text');
+  function namedEntitiesText(text) {
+    return $http.get('/named_entities_text/' + text);
   }
 
   return service;

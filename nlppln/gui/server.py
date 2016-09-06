@@ -65,18 +65,17 @@ def overview_named_entities():
     return jsonify(data=r.to_dict(orient='records'), texts=texts, nes=num_ne)
 
 
-@app.route('/text')
-def get_text():
-    text = os.path.join(app.config.get('in_files'), 'm2-20160726.txt.out.json')
+@app.route('/text/<text>')
+def get_text(text):
+    text = os.path.join(app.config.get('in_files'), text)
     with open(text, encoding='utf-8') as f:
         saf = json.load(f)
 
     return jsonify(data=saf.get('tokens'))
 
 
-@app.route('/named_entities_text')
-def named_entities_text():
-    text = 'm2-20160726.txt.out.json'
+@app.route('/named_entities_text/<text>')
+def named_entities_text(text):
     df = load_ner_csv(app.config.get('meta_in'))
     # filter data
     df = df[df['text'] == text]
