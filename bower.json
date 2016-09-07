@@ -1,38 +1,31 @@
 {
-  "name": "nlppln-gui",
-  "homepage": "https://github.com/WhatWorksWhenForWhom/nlppln",
-  "authors": [
-    "Janneke van der Zwaan <j.vanderzwaan@esciencecenter.nl>"
-  ],
-  "description": "",
-  "main": "",
-  "license": "Apache 2.0",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "name": "test",
+  "version": "0.0.0",
   "dependencies": {
-    "bootstrap": "^3.3.6",
-    "angular": "^1.5.5",
-    "angular-animate": "^1.5.5",
-    "angular-cookies": "^1.5.5",
-    "angular-resource": "^1.5.5",
-    "angular-route": "^1.5.5",
-    "angular-sanitize": "^1.5.5",
-    "angular-touch": "^1.5.5",
-    "angular-bootstrap": "^1.3.2",
-    "datatables": "^1.10.12",
-    "d3": "^4.2.2",
-    "angular-datatables": "^0.5.5"
+    "angular": "^1.4.0",
+    "bootstrap": "^3.2.0",
+    "angular-animate": "^1.4.0",
+    "angular-cookies": "^1.4.0",
+    "angular-resource": "^1.4.0",
+    "angular-route": "^1.4.0",
+    "angular-sanitize": "^1.4.0",
+    "angular-touch": "^1.4.0",
+    "angular-datatables": "^0.5.5",
+    "jquery": "^3.1.0",
+    "d3": "^4.2.2"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.13",
-    "angular-scenario": "~1.2.13"
+    "angular-mocks": "^1.4.0"
   },
-  "resolutions": {
-    "angular": ">=1.4.0"
+  "appPath": "app",
+  "moduleName": "testApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
   }
 }

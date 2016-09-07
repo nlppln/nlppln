@@ -4,6 +4,7 @@ var app = angular.module('nlppln', [
   'ngResource',
   'ngRoute',
   'ui.bootstrap',
+  'datatables.bootstrap',
   'datatables']);
 
   /*app.config(['$routeProvider', function ($routeProvider) {
