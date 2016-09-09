@@ -1,8 +1,8 @@
 'use strict';
 
 angular
-  .module('nlppln')
-  .controller('NETextController', function ($scope, neService) {
+  .module('nlppln', ['datatables'])
+  .controller('NETextController', function ($scope, neService, DTOptionsBuilder, DTColumnDefBuilder) {
     var ctrl = this;
 
     ctrl.currentText = '';

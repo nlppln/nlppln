@@ -4,9 +4,9 @@ angular
   .module('nlppln')
   .factory('neService', neService);
 
-neService.$inject = ['$rootScope', '$http'];
+neService.$inject = ['$rootScope', '$http', '$q'];
 
-function neService($rootScope, $http) {
+function neService($rootScope, $http, $q) {
   var service = {
     namedEntities: namedEntities,
     texts: texts,
@@ -41,7 +41,13 @@ function neService($rootScope, $http) {
   }
 
   function namedEntitiesText(text) {
-    return $http.get('/named_entities_text/' + text);
+    var defer = $q.defer();
+      $http.get('/named_entities_text/' + text).then(function(result) {
+        console.log(result.data.data);
+          defer.resolve(result.data.data);
+
+      });
+      return defer.promise;
   }
 
   function loadText(text) {
@@ -55,12 +61,6 @@ function neService($rootScope, $http) {
         .key(function(d) { return d.sentence; })
         .entries(data.data.data);
       $rootScope.$broadcast('sentences');
-    });
-
-    namedEntitiesText(text).then(function (data) {
-      //console.log(data);
-      service.neDataText = data.data.data;
-      $rootScope.$broadcast('neDataText');
     });
   }
 
