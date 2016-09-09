@@ -5,11 +5,6 @@ angular
   .controller('NEController', function ($scope, neService, DTOptionsBuilder, DTColumnBuilder, $q, $http, $compile) {
     var neCtrl = this;
 
-    neCtrl.numNamedEntities = 0;
-    neCtrl.numTexts = 0;
-    neCtrl.texts = [];
-    neCtrl.neDataTexts = [];
-
     // Datatable NE Overview
     neCtrl.dtOvOptions = DTOptionsBuilder.fromFnPromise(function() {
       var defer = $q.defer();
@@ -26,7 +21,6 @@ angular
         $('td', nRow).unbind('click');
         $('td', nRow).bind('click', function() {
             $scope.$apply(function() {
-              console.log(aData);
               neCtrl.loadText(aData.text);
             });
         });
@@ -42,16 +36,15 @@ angular
       DTColumnBuilder.newColumn('total').withTitle('Total')
     ];
 
+    // Other variables NE overview
+    neCtrl.numNamedEntities = 0;
+    neCtrl.numTexts = 0;
+    neCtrl.texts = [];
+
     // Datatable Text Details
     neCtrl.dtTDOptions = DTOptionsBuilder.fromFnPromise(function() {
-      var text = 'm1-20160726.txt.out.json';
-      var defer = $q.defer();
-        $http.get('/named_entities_text/' + text).then(function(result) {
-          console.log(result.data.data);
-          defer.resolve(result.data.data);
-
-        });
-        return defer.promise;
+      // start with empty text details table (no text is selected)
+      return $q.resolve([]);
     }).withOption('createdRow', function (row, data) {
       $('td', row).css(neService.neColor({'ne': data.ner}));
       $compile(angular.element(row).contents())($scope);
@@ -64,21 +57,9 @@ angular
     ];
     neCtrl.dtTDInstance = {};
 
+    // Other variables used to display text details
     neCtrl.currentText = '';
     neCtrl.sentences = [];
-    neCtrl.neDataText = [];
-
-    $scope.$on('sentences', function() {
-      neCtrl.sentences = neService.sentences;
-    });
-
-    $scope.$on('currentText', function() {
-      neCtrl.currentText = neService.currentText;
-    });
-
-    $scope.$on('neDataText', function() {
-      neCtrl.neDataText = neService.neDataText;
-    });
 
     neCtrl.loadText = function(text) {
       console.log('load text '+text);
@@ -91,14 +72,12 @@ angular
       return neService.neColor(token);
     };
 
-    neCtrl.render = function () {
-      neService.overviewNamedEntities().then(function (data) {
-        neCtrl.numNamedEntities = data.data.nes;
-        neCtrl.numTexts = data.data.texts.length;
-        neCtrl.texts = data.data.texts;
-        neCtrl.neDataTexts = data.data.data;
-      });
-    };
+    $scope.$on('sentences', function() {
+      neCtrl.sentences = neService.sentences;
+    });
 
-    //neCtrl.render();
+    $scope.$on('currentText', function() {
+      neCtrl.currentText = neService.currentText;
+    });
+
 });

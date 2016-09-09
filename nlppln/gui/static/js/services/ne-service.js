@@ -43,9 +43,7 @@ function neService($rootScope, $http, $q) {
   function namedEntitiesText(text) {
     var defer = $q.defer();
       $http.get('/named_entities_text/' + text).then(function(result) {
-        console.log(result.data.data);
-          defer.resolve(result.data.data);
-
+        defer.resolve(result.data.data);
       });
       return defer.promise;
   }
@@ -54,7 +52,6 @@ function neService($rootScope, $http, $q) {
     service.currentText = text;
     $rootScope.$broadcast('currentText');
 
-    // Get text + ner info to display
     getText(text).then(function (data) {
       //console.log(data);
       service.sentences = d3.nest()
