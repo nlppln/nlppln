@@ -27,7 +27,7 @@ def index():
     This is done in Flask (and not angular), because we want to be able to
     start the webserver from Python.
     """
-    return render_template('named_entities.html')
+    return render_template('tabs.html')
 
 
 @app.route('/named_entities')
