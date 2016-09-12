@@ -1,88 +1,127 @@
 {% extends 'base.html' %}
 
 {% block scripts %}
-  {{ super() }}
-  <script src="static/bower_components/jquery/dist/jquery.js"></script>
-  <script src="static/bower_components/angular/angular.js"></script>
-  <script src="static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="static/bower_components/angular-animate/angular-animate.js"></script>
-  <script src="static/bower_components/angular-cookies/angular-cookies.js"></script>
-  <script src="static/bower_components/angular-resource/angular-resource.js"></script>
-  <script src="static/bower_components/angular-route/angular-route.js"></script>
-  <script src="static/bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="static/bower_components/angular-touch/angular-touch.js"></script>
-  <script src="static/bower_components/datatables.net/js/jquery.dataTables.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/angular-datatables.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js"></script>
-  <script src="static/bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
-  <script src="static/bower_components/d3/d3.js"></script>
+    {{ super() }}
+    <script src="static/bower_components/jquery/dist/jquery.js"></script>
+    <script src="static/bower_components/angular/angular.js"></script>
+    <script src="static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="static/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="static/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="static/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="static/bower_components/angular-route/angular-route.js"></script>
+    <script src="static/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="static/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="static/bower_components/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/angular-datatables.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js"></script>
+    <script src="static/bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
+    <script src="static/bower_components/d3/d3.js"></script>
 
-  <script src="static/js/app.js"></script>
-  <script src="static/js/controllers/ne-controller.js"></script>
-  <script src="static/js/services/ne-service.js"></script>
+    <script src="static/js/app.js"></script>
+    <script src="static/js/controllers/ne-controller.js"></script>
+    <script src="static/js/services/ne-service.js"></script>
 
 {% endblock %}
 
 {% block styles %}
-{{super()}}
-  <link rel="stylesheet" href="static/bower_components/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="static/bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css" />
+    {{super()}}
+    <link rel="stylesheet" href="static/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="static/bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css"/>
 {% endblock %}
 
 {% block content %}
-<div ng-app="nlppln">
-  <div class="container" ng-controller="NEController as ne">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Named Entities</h1>
-            <p>Found {{ ne.numNamedEntities | angular }} named entities in {{ ne.numTexts | angular }} texts.</p>
-
-            <table datatable="" class="table table-striped table-bordered"
-                   dt-options="ne.dtOvOptions" dt-columns="ne.dtOvColumns"
-                   cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <th>Text</th>
-                  <th ng-style="neColor({'ne': 'PER'});">Person</th>
-                  <th ng-style="neColor({'ne': 'LOC'});">Location</th>
-                  <th ng-style="neColor({'ne': 'ORG'});">Organization</th>
-                  <th ng-style="neColor({'ne': ''});">Unspecified</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-            </table>
-
+    <div ng-app="nlppln">
+        <div class="container" ng-controller="NEController as ne">
             <div class="row">
-              <div class="col-md-7">
-                <div ng-repeat="s in ne.sentences">
-                  <span ng-repeat="token in s.values">
-                    <span ng-style="neColor(token);">{{ token.word | angular }}</span>
-                  </span>
-                  <br/>
-                </div>
-              </div>
-              <div class="col-md-5">
-                <table datatable="" class="table table-bordered" cellspacing="0"
-                       dt-options="ne.dtTDOptions" dt-columns="ne.dtTDColumns"
-                       dt-instance="ne.dtTDInstance">
-                </table>
-              </div>
-            </div>
+                <div class="col-md-12">
+                    <h1>Named Entities</h1>
+                    <div role="tabpanel">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <!-- Overview texts tab navigation part -->
+                            <li role="presentation" ng-class="selectedTab === 'texts' ? 'active' : ''">
+                                <a data-target="#tab" data-toggle="tab" ng-click="selectTab('texts')">Overview Texts</a>
+                            </li>
+                            <!-- Overview named entities tab navigation part -->
+                            <li role="presentation" ng-class="selectedTab === 'nes' ? 'active' : ''">
+                                <a data-target="#tab" data-toggle="tab" ng-click="selectTab('nes')">Overview Named Entities</a>
+                            </li>
+                            <!-- Text tab tab navigation part -->
+                            <li role="presentation" ng-class="selectedTab === 'text' ? 'active' : ''">
+                                <a data-target="#tab" data-toggle="tab" ng-click="selectTab('text')">Text</a>
+                            </li>
+                        </ul>
+                        <!-- Overview texts tab -->
+                        <div class="tab-content" ng-show="selectedTab == 'texts'">
+                            <div role="tabpanel" class="tab-pane active" id="tab">
+                                <div>
+                                    <p>Found
+                                        {{ ne.numNamedEntities | angular }}
+                                        named entities in
+                                        {{ ne.numTexts | angular }}
+                                        texts.</p>
 
-      </div>
+                                    <!-- DataTable texts with frequencies of named entities -->
+                                    <table datatable="" class="table table-striped table-bordered" dt-options="ne.dtOvOptions" dt-columns="ne.dtOvColumns" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Text</th>
+                                                <th ng-style="neColor({'ne': 'PER'});">Person</th>
+                                                <th ng-style="neColor({'ne': 'LOC'});">Location</th>
+                                                <th ng-style="neColor({'ne': 'ORG'});">Organization</th>
+                                                <th ng-style="neColor({'ne': ''});">Unspecified</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Overview named entities tab -->
+                        <div class="tab-content" ng-show="selectedTab == 'nes'">
+                            <div role="tabpanel" class="tab-pane active" id="tab">nes</div>
+                        </div>
+
+                        <!-- Text tab -->
+                        <div class="tab-content" ng-show="selectedTab == 'text'">
+                            <div role="tabpanel" class="tab-pane active" id="tab">
+                                <!-- Text with colored named entities -->
+                                <div class="col-md-7">
+                                    <div ng-repeat="s in ne.sentences">
+                                        <span ng-repeat="token in s.values">
+                                            <span ng-style="neColor(token);">{{ token.word | angular }}</span>
+                                        </span>
+                                        <br/>
+                                    </div>
+                                </div>
+
+                                <!-- DataTable named entities of text -->
+                                <div class="col-md-5">
+                                    <table datatable="" class="table table-bordered" cellspacing="0"
+                                          dt-options="ne.dtTDOptions" dt-columns="ne.dtTDColumns"
+                                          dt-instance="ne.dtTDInstance"></table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"></div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-      </div>
-    </div>
-  </div>
 {% endblock %}

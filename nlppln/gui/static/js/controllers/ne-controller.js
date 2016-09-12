@@ -65,7 +65,7 @@ angular
       console.log('load text '+text);
       neService.loadText(text);
       neCtrl.dtTDInstance.changeData(neService.namedEntitiesText(text));
-      //$scope.active = 1;
+      $scope.selectTab('text');
     };
 
     $scope.neColor = function(token) {
@@ -79,5 +79,12 @@ angular
     $scope.$on('currentText', function() {
       neCtrl.currentText = neService.currentText;
     });
+
+    $scope.selectedTab = 'texts';
+
+    $scope.selectTab = function(name){
+      console.log('selecting tab ' + name);
+      $scope.selectedTab = name;
+    };
 
 });
