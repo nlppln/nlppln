@@ -16,8 +16,6 @@ app = Flask(__name__)
 Bootstrap(app)
 Bower(app)
 Triangle(app)
-app.config['meta_in'] = '/home/jvdzwaan/data/tmp/ner-statistics.csv'
-app.config['in_files'] = '/home/jvdzwaan/data/tmp/cwl/saf/'
 
 
 @app.route('/')
@@ -83,7 +81,7 @@ def overview_named_entities():
 
 @app.route('/text/<text>')
 def get_text(text):
-    text = os.path.join(app.config.get('in_files'), text)
+    text = os.path.join(app.config.get('dir_in'), text)
     with open(text, encoding='utf-8') as f:
         saf = json.load(f)
 
