@@ -12,7 +12,7 @@ import json
 def command(param_name, input_dir, output_file):
     """Generate a json file that specifies an input file list for a cwl step.
     """
-    output_dir = os.path.dirname(output_file)
+    output_dir = os.path.dirname(os.path.abspath(output_file))
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
