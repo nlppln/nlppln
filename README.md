@@ -42,3 +42,16 @@ Save python command to [nlppln/command.py]:
 Save metadata to? [metadata_out.csv]:
 Save cwl step to [cwl/steps/command.cwl]:
 ```
+
+## GUI
+
+NLP Pipeline provides a GUI to inspect the results of running text processing workflows.
+Currently, the GUI allows users to inspect the results of named entity recognition.
+
+Command:
+
+    python -m nlppln.inspect_ne <META IN> <IN FILES>
+
+Results can be inspected at http://localhost:5000/ (the browser is started automatically).
+For development, start the GUI with `python -m nlppln.gui.server <META IN> <IN FILES>`.
+In this case, the GUI is started with `debug=True`.
