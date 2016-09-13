@@ -5,7 +5,7 @@ angular
   .controller('NEController', function ($scope, neService, DTOptionsBuilder, DTColumnBuilder, $q, $http, $compile) {
     var neCtrl = this;
 
-    // Datatable NE Overview
+    // Datatable texts Overview
     neCtrl.dtOvOptions = DTOptionsBuilder.fromFnPromise(function() {
       var defer = $q.defer();
         $http.get('/overview_named_entities').then(function(result) {
@@ -36,7 +36,7 @@ angular
       DTColumnBuilder.newColumn('total').withTitle('Total')
     ];
 
-    // Other variables NE overview
+    // Other variables texts overview
     neCtrl.numNamedEntities = 0;
     neCtrl.numTexts = 0;
     neCtrl.texts = [];
@@ -67,6 +67,21 @@ angular
       neCtrl.dtTDInstance.changeData(neService.namedEntitiesText(text));
       $scope.selectTab('text');
     };
+
+    // Datatable NE Overview
+    neCtrl.dtNeOptions = DTOptionsBuilder.fromFnPromise(function() {
+      return neService.namedEntitiesAggr();
+    }).withOption('createdRow', function (row, data) {
+      $('td', row).css(neService.neColor({'ne': data.ner}));
+      $compile(angular.element(row).contents())($scope);
+    })
+    .withPaginationType('full_numbers');
+    neCtrl.dtNeColumns = [
+      DTColumnBuilder.newColumn('ner').withTitle('NE type'),
+      DTColumnBuilder.newColumn('word').withTitle('Word(s)'),
+      DTColumnBuilder.newColumn('count').withTitle('Frequency'),
+      DTColumnBuilder.newColumn('text_count').withTitle('# Texts')
+    ];
 
     $scope.neColor = function(token) {
       return neService.neColor(token);

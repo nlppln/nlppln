@@ -15,6 +15,7 @@ function neService($rootScope, $http, $q) {
     namedEntitiesText: namedEntitiesText,
     loadText: loadText,
     neColor: neColor,
+    namedEntitiesAggr: namedEntitiesAggr,
     currentText: null,
     sentences: [],
     neDataText: [],
@@ -70,6 +71,14 @@ function neService($rootScope, $http, $q) {
       return {'background-color': service.color(type)};
     }
     return {};
+  }
+
+  function namedEntitiesAggr() {
+    var defer = $q.defer();
+      $http.get('/named_entities_aggr').then(function(result) {
+        defer.resolve(result.data.data);
+      });
+      return defer.promise;
   }
 
   return service;

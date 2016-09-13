@@ -37,6 +37,22 @@ def named_entities():
     return jsonify(data=df.to_dict(orient='records'))
 
 
+@app.route('/named_entities_aggr')
+def named_entities_aggr():
+    df = load_ner_csv(app.config.get('meta_in'))
+
+    grouped = df.groupby(['ner', 'word'])
+    r = grouped.count()
+    r['text_count'] = grouped['text'].apply(lambda x: len(set(x)))
+    r['word'] = r.index.get_level_values('word')
+    r['ner'] = r.index.get_level_values('ner')
+
+    r.columns = ['count' if c == 'w_id' else c for c in r.columns]
+    r = r.drop('text', 1)
+
+    return jsonify(data=r.to_dict(orient='records'))
+
+
 @app.route('/texts')
 def texts():
     df = load_ner_csv(app.config.get('meta_in'))

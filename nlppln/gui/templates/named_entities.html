@@ -70,7 +70,9 @@
                                         texts.</p>
 
                                     <!-- DataTable texts with frequencies of named entities -->
-                                    <table datatable="" class="table table-striped table-bordered" dt-options="ne.dtOvOptions" dt-columns="ne.dtOvColumns" cellspacing="0" width="100%">
+                                    <table datatable="" class="table table-striped table-bordered"
+                                           dt-options="ne.dtOvOptions" dt-columns="ne.dtOvColumns"
+                                           cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>Text</th>
@@ -89,7 +91,11 @@
 
                         <!-- Overview named entities tab -->
                         <div class="tab-content" ng-show="selectedTab == 'nes'">
-                            <div role="tabpanel" class="tab-pane active" id="tab">nes</div>
+                            <div role="tabpanel" class="tab-pane active" id="tab">
+                              <table datatable="" class="table table-bordered" cellspacing="0"
+                                     dt-options="ne.dtNeOptions" dt-columns="ne.dtNeColumns">
+                              </table>
+                            </div>
                         </div>
 
                         <!-- Text tab -->
