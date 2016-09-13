@@ -17,6 +17,13 @@ git checkout develop
 python setup.py develop
 ```
 
+For the GUI:
+
+```
+npm install
+bower install
+```
+
 Tools can be run by using the Python -m option, e.g. `python -m nlppln.guess_language <INPUTDIR> <OUTPUTFILE>`.
 
 ## Generating command line NLP tool boilerplate and cwl steps
@@ -55,3 +62,5 @@ Command:
 Results can be inspected at http://localhost:5000/ (the browser is started automatically).
 For development, start the GUI with `python -m nlppln.gui.server <META IN> <IN FILES>`.
 In this case, the GUI is started with `debug=True`.
+
+Please note that the GUI requires some additional work (see [Installation](#Installation)).
