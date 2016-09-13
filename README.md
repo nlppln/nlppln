@@ -63,4 +63,4 @@ Results can be inspected at http://localhost:5000/ (the browser is started autom
 For development, start the GUI with `python -m nlppln.gui.server <META IN> <IN FILES>`.
 In this case, the GUI is started with `debug=True`.
 
-Please note that the GUI requires some additional work (see [Installation](#Installation)).
+Please note that the GUI requires some additional work (see [Installation](#installation)).
