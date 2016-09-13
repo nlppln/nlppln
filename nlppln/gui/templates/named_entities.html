@@ -101,6 +101,11 @@
                         <!-- Text tab -->
                         <div class="tab-content" ng-show="selectedTab == 'text'">
                             <div role="tabpanel" class="tab-pane active" id="tab">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <h3>{{ ne.currentText | angular }}</h3>
+                                </div>
+                              </div>
                                 <!-- Text with colored named entities -->
                                 <div class="col-md-7">
                                     <div ng-repeat="s in ne.sentences">

@@ -93,6 +93,7 @@ angular
 
     $scope.$on('currentText', function() {
       neCtrl.currentText = neService.currentText;
+      console.log(neCtrl.currentText);
     });
 
     $scope.selectedTab = 'texts';
