@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import click
-import os
 import sys
 import codecs
 
@@ -91,10 +90,7 @@ def command():
         out_file = click.prompt('Save cwl step to', type=click.Path(),
                                 default=default)
 
-        output_dir = os.path.dirname(out_file)
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-
+        create_dirs(out_file)
         with codecs.open(out_file, 'wb', encoding='utf-8') as f:
             f.write(r)
             f.write('\n')
