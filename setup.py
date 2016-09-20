@@ -62,7 +62,8 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['xtas', 'amqp<2.0,>=1.4.9', 'pandas', 'Flask==0.11.1',
-                      'Flask-Bootstrap==3.3.6.0', 'Flask-Bower==1.2.1'],
+                      'Flask-Bootstrap==3.3.6.0', 'Flask-Bower==1.2.1',
+                      'doc2txt'],
 
     #scripts=['recipy-cmd']
 )
