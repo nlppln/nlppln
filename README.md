@@ -50,6 +50,18 @@ Save metadata to? [metadata_out.csv]:
 Save cwl step to [cwl/steps/command.cwl]:
 ```
 
+## Workflows
+
+### Anonymize
+
+The anonmize-workflow finds named entities in all text files in a directory. Named entities
+are replaced with their type (PER, LOC, ORG). The output consists of saf-files.
+
+Usage:
+```
+> cwl-runner /path/to/nlppln/cwl/workflows/anonymize.cwl --txt-dir <IN FILES>
+```
+
 ## GUI
 
 NLP Pipeline provides a GUI to inspect the results of running text processing workflows.
