@@ -1,3 +1,9 @@
---index-url https://pypi.python.org/simple/
-
--e .
+amqp<2.0,>=1.4.9
+cython
+scipy
+xtas
+pandas
+Flask==0.11.1
+Flask-Bootstrap==3.3.6.0
+Flask-Bower==1.2.1
+docx2txt
