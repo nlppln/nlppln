@@ -8,7 +8,7 @@ arguments:
 
 inputs:
 - id: in_dir
-  type: Directory
+  type: string
   inputBinding:
     position: 2
 

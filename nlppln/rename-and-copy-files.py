@@ -15,11 +15,10 @@ def command(in_dir, out_dir):
     in_files = [os.path.join(in_dir, f) for f in os.listdir(in_dir)
                 if os.path.isfile(os.path.join(in_dir, f))]
 
-    click.echo(in_files)
-
     for fi in in_files:
         fo = fi.replace(' ', '-')
-        fo = fo.replace(in_dir, out_dir)
+        fo = os.path.basename(fo)
+        fo = os.path.join(out_dir, fo)
         shutil.copy2(fi, fo)
 
 if __name__ == '__main__':
