@@ -13,13 +13,16 @@ def command(in_files, out_dir):
     create_dirs(out_dir)
 
     for fi in in_files:
-        text = docx2txt.process(fi)
+        try:
+            text = docx2txt.process(fi)
 
-        out_file = out_file_name(out_dir, fi, 'txt')
-        with codecs.open(out_file, 'wb', encoding='utf-8') as f:
-            f.write(text)
-            f.write('\n')
-
+            out_file = out_file_name(out_dir, fi, 'txt')
+            with codecs.open(out_file, 'wb', encoding='utf-8') as f:
+                f.write(text)
+                f.write('\n')
+        except Exception as e:
+            click.echo('Error in file: {}'.format(fi))
+            click.echo(e)
 
 if __name__ == '__main__':
     command()
