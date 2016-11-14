@@ -2,6 +2,7 @@ cwlVersion: v1.0
 class: Workflow
 inputs:
   txt-dir: Directory
+  mode: string?
 
 outputs:
   ner_stats:
@@ -16,32 +17,33 @@ outputs:
 
 steps:
   frog-ner:
-    run: ../steps/frog-dir.cwl
+    run: frog-dir.cwl
     in:
       dir_in: txt-dir
     out: [frogout]
 
   frog-to-saf:
-    run: ../steps/frog-to-saf.cwl
+    run: frog-to-saf.cwl
     in:
       in_files: frog-ner/frogout
     out: [saf]
 
   save-ner-data:
-    run: ../steps/save-ner-data.cwl
+    run: save-ner-data.cwl
     in:
       in_files: frog-to-saf/saf
     out: [ner_statistics]
 
   replace-ner:
-    run: ../steps/replace-ner.cwl
+    run: replace-ner.cwl
     in:
       metadata: save-ner-data/ner_statistics
       in_files: frog-to-saf/saf
+      mode: mode
     out: [out_files]
 
   saf-to-txt:
-    run: ../steps/saf-to-txt.cwl
+    run: saf-to-txt.cwl
     in:
       in_files: replace-ner/out_files
     out: [out_files]

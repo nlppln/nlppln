@@ -16,6 +16,12 @@ inputs:
     items: File
   inputBinding:
     position: 2
+- id: mode
+  type: string?
+  inputBinding:
+    prefix: --mode=
+    separate: false
+
 outputs:
 - id: out_files
   type:
@@ -23,4 +29,3 @@ outputs:
     items: File
   outputBinding:
     glob: "*.json"
-
