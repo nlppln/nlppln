@@ -13,6 +13,11 @@ inputs:
     items: File
   inputBinding:
     position: 2
+- id: tika_server
+  type: string?
+  inputBinding:
+    prefix: --tika_server=
+    separate: false
 
 outputs:
 - id: out_files
