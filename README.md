@@ -4,27 +4,57 @@ A python package to create NLP pipelines using [Common Workflow Language](http:/
 
 Basically, it provides python scripts for common NLP tasks that can be run as
 command line tools, and CWL specifications to use those tools. Most tools
-wrap existing NLP functionality, usually through [xtas](http://xtas.net/).
+wrap existing NLP functionality.
 The command line tools are made with [Click](http://click.pocoo.org), a Python
 package for creating command line interfaces.
 
 ## Installation
 
+Install [Python](https://www.python.org/downloads/) 2.7.11 and
+[pip](https://pip.pypa.io/en/stable/installing/).
+
+We recommend installing `nlppln` in a
+[virtual environment](https://virtualenv.pypa.io/en/stable/) (`pip install virtualenv`).
+
 ```
 git clone https://github.com/WhatWorksWhenForWhom/nlppln.git
 cd nlppln
+
+virtualenv /path/to/env
+source /path/to/env/bin/activate
+
 git checkout develop
+pip install cython
+pip install -r requirements.txt
 python setup.py develop
 ```
 
+If you get an error while installing `nlppln`, it is most likely due to requirements
+for xtas that are missing. Please have a look at the
+[xtas installation instructions](http://xtas.net/setup.html#installation). We
+are working on removing the dependency on xtas.
+
 For the GUI:
 
+Install [nodejs](https://nodejs.org/en/download/) (or via
+[package manager](https://nodejs.org/en/download/package-manager/)) and
+[npm](https://docs.npmjs.com/getting-started/installing-node)
+
+Install [bower](https://bower.io/)
+```
+npm install -g bower
+```
+
+Then type:
 ```
 npm install
 bower install
 ```
 
 Tools can be run by using the Python -m option, e.g. `python -m nlppln.guess_language <INPUTDIR> <OUTPUTFILE>`.
+
+To run CWL workflows created with `nlppln`, install a cwl-runner (`pip install
+cwlref-runner`) and [Docker](https://docs.docker.com/engine/installation/).
 
 ## Generating command line NLP tool boilerplate and cwl steps
 
@@ -55,12 +85,13 @@ Save cwl step to [cwl/steps/command.cwl]:
 ### Anonymize
 
 The anonmize-workflow finds named entities in all text files in a directory. Named entities
-are replaced with their type (PER, LOC, ORG). The output consists of saf-files.
+are replaced with their type (PER, LOC, ORG). The output consists of text files and a csv file that contains the named entities that have been replaced.
 
 Usage:
 ```
-> cwl-runner /path/to/nlppln/cwl/workflows/anonymize.cwl --txt-dir <IN FILES>
+cwl-runner /path/to/nlppln/cwl/anonymize.cwl --txt-dir /path/to/dir/with/text/files
 ```
+The text files with named entities removed are saved in the directory where the pipeline is run.
 
 ## GUI
 
