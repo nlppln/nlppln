@@ -10,7 +10,7 @@ package for creating command line interfaces.
 
 ## Installation
 
-Install [Python](https://www.python.org/downloads/) 2.7.11 and
+Install [Python](https://www.python.org/downloads/) 2.7 and
 [pip](https://pip.pypa.io/en/stable/installing/).
 
 We recommend installing `nlppln` in a
