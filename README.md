@@ -10,8 +10,9 @@ package for creating command line interfaces.
 
 ## Installation
 
-Install [Python](https://www.python.org/downloads/) 2.7 and
-[pip](https://pip.pypa.io/en/stable/installing/).
+Install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git),
+[Python](https://www.python.org/downloads/) 2.7 (feel free to try using `nlppln`
+with Python 3) and [pip](https://pip.pypa.io/en/stable/installing/).
 
 We recommend installing `nlppln` in a
 [virtual environment](https://virtualenv.pypa.io/en/stable/) (`pip install virtualenv`).
