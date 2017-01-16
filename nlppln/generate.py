@@ -66,7 +66,7 @@ def command():
                             inputs=inputs, outputs=outputs, meta_out=meta_out,
                             args=', '.join(args))
 
-        default = 'nlppln/{}.py'.format(cname)
+        default = 'nlppln/commands/{}.py'.format(cname)
         out_file = click.prompt('Save python command to', type=click.Path(),
                                 default=default)
         create_dirs(out_file)
