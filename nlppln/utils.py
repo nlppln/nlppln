@@ -24,7 +24,22 @@ def create_dirs(fname):
     if not os.path.exists(fname):
         os.makedirs(fname)
 
-def out_file_name(out_dir, fname, ext):
+
+def out_file_name(out_dir, fname, ext=None):
+    """Return path of output file, given a directory, file name and extension.
+
+    Args:
+        out_dir (str): path to the directory where output should be written.
+        fname (str): name of the input file.
+        ext (str): file extension of the output file (defaults to None).
+
+    Returns:
+        str: out_dir + fname with extension replaced. If `ext` is `None`, the
+            original extension is kept.
+    """
+    if ext is None:
+        return os.path.join(out_dir, fname)
+
     fname = remove_ext(fname)
     return os.path.join(out_dir, '{}.{}'.format(fname, ext))
 
