@@ -51,8 +51,8 @@ def copy_cwl_files(from_dir=CWL_PATH):
     locations where the cwl-runner looks for cwl files.
 
     Args:
-        from_dir: Path to directory where to copy files from (default: the cwl
-        directory of nlppln).
+        from_dir (str): Path to directory where to copy files from (default:
+            the cwl directory of nlppln).
     """
     cwl_data_dir = os.environ.get('XDG_DATA_HOME')
     if not cwl_data_dir:
