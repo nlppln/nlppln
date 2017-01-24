@@ -1,7 +1,7 @@
 import os
 
 from wfgenerator import WorkflowGenerator
-from commnds import *
+from commands import *
 
 __version__ = '0.0.0'
 
