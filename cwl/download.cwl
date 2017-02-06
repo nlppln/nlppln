@@ -1,7 +1,7 @@
 #!/usr/bin/env cwlrunner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "nlppln.download"]
+baseCommand: ["python", "-m", "nlppln.commands.download"]
 arguments:
   - valueFrom: $(runtime.outdir)
     position: 3

@@ -1,7 +1,7 @@
 #!/usr/bin/env cwlrunner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "nlppln.rename-and-copy-files"]
+baseCommand: ["python", "-m", "nlppln.commands.rename-and-copy-files"]
 doc: |
   Remove spaces from file names. The renamed files are copied to the current working directory.
 

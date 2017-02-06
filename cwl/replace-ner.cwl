@@ -1,7 +1,7 @@
 #!/usr/bin/env cwlrunner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "nlppln.replace_ner"]
+baseCommand: ["python", "-m", "nlppln.commands.replace_ner"]
 arguments:
   - valueFrom: $(runtime.outdir)
     position: 3
