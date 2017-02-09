@@ -1,7 +1,7 @@
 #!/usr/bin/env cwlrunner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "nlppln.{{command_name}}"]
+baseCommand: ["python", "-m", "nlppln.command.{{command_name}}"]
 {% if outputs or meta_out %}
 arguments:
 {% endif %}
