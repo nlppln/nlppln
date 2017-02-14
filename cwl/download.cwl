@@ -1,21 +1,23 @@
 #!/usr/bin/env cwlrunner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "nlppln.commands.saf_to_txt"]
+baseCommand: ["python", "-m", "nlppln.commands.download"]
 arguments:
   - valueFrom: $(runtime.outdir)
-    position: 2
+    position: 3
+
 inputs:
-- id: in_files
+- id: urls
   type:
     type: array
-    items: File
+    items: string
   inputBinding:
-    position: 1
+    position: 2
+
 outputs:
 - id: out_files
   type:
     type: array
     items: File
   outputBinding:
-    glob: "*.txt"
+    glob: "*"

@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "nlppln.frog_to_saf"]
+baseCommand: ["python", "-m", "nlppln.commands.frog_to_saf"]
 arguments:
   - valueFrom: $(runtime.outdir)
     position: 2

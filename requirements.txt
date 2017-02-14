@@ -7,4 +7,4 @@ Flask==0.11.1
 Flask-Bootstrap==3.3.6.0
 Flask-Bower==1.2.1
 docx2txt
--e git://github.com/NLeSC/scriptcwl.git@9530be254809cb7d4243e09df056a170ae1c9610#egg=scriptcwl
+scriptcwl

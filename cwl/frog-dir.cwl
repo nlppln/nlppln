@@ -16,6 +16,12 @@ inputs:
       position: 1
       prefix: --testdir=
       separate: false
+  - id: skip
+    type: string?
+    inputBinding:
+      position: 2
+      prefix: --skip=
+      separate: false
 outputs:
   - id: frogout
     type:

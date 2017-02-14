@@ -1,7 +1,7 @@
 #!/usr/bin/env cwlrunner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "nlppln.worddocx2txt"]
+baseCommand: ["python", "-m", "nlppln.commands.worddocx2txt"]
 arguments:
   - valueFrom: $(runtime.outdir)
     position: 3
