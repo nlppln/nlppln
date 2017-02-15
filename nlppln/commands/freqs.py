@@ -20,6 +20,8 @@ def freqs(in_files, output_file):
     freqs = np.array(X.sum(axis=0)).squeeze()
     vocab_df = pd.DataFrame(
         {'word': vectorizer.get_feature_names(), 'freq': freqs})
+    vocab_df['rank'] = vocab_df['freq'].rank(method='first', ascending=False)
+    vocab_df = vocab_df.sort('rank')
     vocab_df.to_csv(output_file, encoding='utf-8', index=False)
 
 
