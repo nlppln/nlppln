@@ -3,10 +3,73 @@ import click
 import os
 import codecs
 import json
-
-from xtas.tasks._frog import parse_frog, frog_to_saf
+import datetime
 
 from nlppln.utils import create_dirs, out_file_name
+
+
+_POSMAP = {"VZ": "P",
+           "N": "N",
+           "ADJ": "A",
+           "LET": ".",
+           "VNW": "O",
+           "LID": "D",
+           "SPEC": "M",
+           "TW": "Q",
+           "WW": "V",
+           "BW": "B",
+           "VG": "C",
+           "TSW": "I",
+           "MWU": "U",
+           "": "?",
+           }
+
+
+def parse_frog(lines):
+    """
+    Interpret the output of the frog parser.
+    Input should be an iterable of lines (i.e. the output of call_frog)
+    Result is a sequence of dicts representing the tokens
+    """
+    sid = 0
+    for i, line in enumerate(lines):
+        if not line:
+            # end of sentence marker
+            sid += 1
+        else:
+            parts = line.split("\t")
+            tid, token, lemma, morph, pos, conf, ne, _, parent, rel = parts
+            if rel:
+                rel = (rel, int(parent) - 1)
+            result = dict(id=i, sentence=sid, word=token, lemma=lemma,
+                          pos=pos, pos_confidence=float(conf),
+                          rel=rel)
+            if ne != 'O':
+                # NER label from BIO tags
+                result["ne"] = ne.split('_', 1)[0][2:]
+            yield result
+
+
+def _add_pos1(token):
+    """
+    Adds a 'pos1' element to a frog token.
+    """
+    result = token.copy()
+    result['pos1'] = _POSMAP[token['pos'].split("(")[0]]
+    return result
+
+
+def frog_to_saf(tokens):
+    """
+    Convert frog tokens into a new SAF document
+    """
+    tokens = [_add_pos1(token) for token in tokens]
+    module = {'module': "frog",
+              "started": datetime.datetime.now().isoformat()}
+    return {"header": {'format': "SAF",
+                       'format-version': "0.0",
+                       'processed': [module]
+                       }, "tokens": tokens}
 
 
 @click.command()
