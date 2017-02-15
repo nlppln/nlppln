@@ -2,18 +2,18 @@
 cwlVersion: cwl:v1.0
 class: CommandLineTool
 baseCommand: frog
-arguments: ["-o", $(runtime.outdir)/out.txt]
+arguments: ["-o", $(inputs.in_file.nameroot).out]
 hints:
   - class: DockerRequirement
     dockerPull: proycon/lamachine
 inputs:
-  - id: text_in
+  in_file:
     type: File
     inputBinding:
       position: 1
       prefix: -t
 outputs:
-  - id: frogout
+  frogout:
     type: File
     outputBinding:
-      glob: "*.txt"
+      glob: "$(inputs.in_file.nameroot).out"
