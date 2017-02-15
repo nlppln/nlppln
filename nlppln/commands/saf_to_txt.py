@@ -30,22 +30,22 @@ def command(input_files, output_dir, mode):
                 s_id = t['sentence']
                 sentence = []
             elif t['sentence'] != s_id:
-                lines.append(''.join(sentence).strip())
+                lines.append(u''.join(sentence).strip())
                 sentence = []
                 s_id = t['sentence']
 
             if t.get('pos1') == '.':
                 sentence.append(t[mode])
             else:
-                sentence.append(' {}'.format(t[mode]))
+                sentence.append(u' {}'.format(t[mode]))
 
         head, tail = os.path.split(fi)
         fname = tail.replace(os.path.splitext(tail)[1], '')
 
         out_file = os.path.join(output_dir, '{}.txt'.format(fname))
         with codecs.open(out_file, 'wb', encoding='utf-8') as f:
-            f.write('\n'.join(lines))
-            f.write('\n')
+            f.write(u'\n'.join(lines))
+            f.write(u'\n')
 
 
 if __name__ == '__main__':
