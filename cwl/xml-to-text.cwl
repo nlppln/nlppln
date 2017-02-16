@@ -1,16 +1,14 @@
 #!/usr/bin/env cwlrunner
 cwlVersion: cwl:v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "nlppln.xml_to_text"]
+baseCommand: ["python", "-m", "nlppln.commands.xml_to_text"]
 arguments:
   - valueFrom: $(runtime.outdir)
     position: 3
 
 inputs:
 - id: in_files
-  type:
-    type: array
-    items: File
+  type: File
   inputBinding:
     position: 2
 - id: tag
@@ -21,9 +19,7 @@ inputs:
 
 outputs:
 - id: out_files
-  type:
-    type: array
-    items: File
+  type: File
   outputBinding:
     glob: "*.txt"
 
