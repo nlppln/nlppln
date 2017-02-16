@@ -61,7 +61,7 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['amqp<2.0,>=1.4.9', 'cython', 'scipy', 'xtas',
+    install_requires=['scipy',
                       'Flask==0.11.1', 'Flask-Bootstrap==3.3.6.0',
                       'Flask-Bower==1.2.1', 'docx2txt', 'pandas', 'scriptcwl']
 
