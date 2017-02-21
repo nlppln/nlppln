@@ -4,12 +4,17 @@ class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.ls"]
 
 inputs:
-  dir_in:
+  in_dir:
     type: Directory
     inputBinding:
       position: 2
+  recursive:
+    type: boolean?
+    inputBinding:
+      prefix: --recursive
+
 stdout: cwl.output.json
 
 outputs:
-  files:
+  out_files:
     type: File[]

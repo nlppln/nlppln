@@ -44,6 +44,10 @@ def out_file_name(out_dir, fname, ext=None):
     return os.path.join(out_dir, '{}.{}'.format(fname, ext))
 
 
+def cwl_file(fname):
+    return {'class': 'File', 'path': fname}
+
+
 def copy_cwl_files(from_dir=CWL_PATH):
     """Copy cwl files to a directory where the cwl-runner can find them.
 
