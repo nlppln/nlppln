@@ -63,7 +63,8 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['scipy',
                       'Flask==0.11.1', 'Flask-Bootstrap==3.3.6.0',
-                      'Flask-Bower==1.2.1', 'docx2txt', 'pandas', 'scriptcwl']
+                      'Flask-Bower==1.2.1', 'docx2txt', 'pandas', 'scriptcwl',
+                      'lxml']
 
     #scripts=['recipy-cmd']
 )

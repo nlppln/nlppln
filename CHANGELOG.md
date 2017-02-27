@@ -6,6 +6,9 @@
 
 #### Commands
 
+- command to convert xml to text (`xml-to-txt.cwl`)
+- command to extract word frequencies from saf files (`saf-to-freqs.cwl`)
+- command to convert word frequencies to vocabulary ranked by frequency (`freqs.cwl`)
 - command to list all files in directory (`ls.cwl`)
 - command that takes as input a list of files and returns a list of lists of files (`chunk-list-of-files.cwl`)
 - command that tokenizes text using ixa-pipe-tok (`ixa-pipe-tok.cwl`)
