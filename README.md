@@ -18,6 +18,17 @@ We recommend installing `nlppln` in a
 [virtual environment](https://virtualenv.pypa.io/en/stable/) (`pip install virtualenv`).
 
 ```
+pip install nlppln
+```
+
+Tools can be run by using the Python -m option, e.g. `python -m nlppln.apachetika <INPUTDIR> <OUTPUTDIR>`.
+
+To run CWL workflows created with `nlppln`, install a cwl-runner (`pip install
+cwlref-runner`) and [Docker](https://docs.docker.com/engine/installation/).
+
+### For development
+
+```
 git clone https://github.com/WhatWorksWhenForWhom/nlppln.git
 cd nlppln
 
@@ -25,17 +36,11 @@ virtualenv /path/to/env
 source /path/to/env/bin/activate
 
 git checkout develop
-pip install cython
 pip install -r requirements.txt
 python setup.py develop
 ```
 
-If you get an error while installing `nlppln`, it is most likely due to requirements
-for xtas that are missing. Please have a look at the
-[xtas installation instructions](http://xtas.net/setup.html#installation). We
-are working on removing the dependency on xtas.
-
-For the GUI:
+For the GUI (currently, the GUI is available only in development mode):
 
 Install [nodejs](https://nodejs.org/en/download/) (or via
 [package manager](https://nodejs.org/en/download/package-manager/)) and
@@ -51,11 +56,6 @@ Then type:
 npm install
 bower install
 ```
-
-Tools can be run by using the Python -m option, e.g. `python -m nlppln.guess_language <INPUTDIR> <OUTPUTFILE>`.
-
-To run CWL workflows created with `nlppln`, install a cwl-runner (`pip install
-cwlref-runner`) and [Docker](https://docs.docker.com/engine/installation/).
 
 ## Generating command line NLP tool boilerplate and cwl steps
 
@@ -80,6 +80,46 @@ Save python command to [nlppln/command.py]:
 Save metadata to? [metadata_out.csv]:
 Save cwl step to [cwl/steps/command.cwl]:
 ```
+
+## Creating workflows
+
+Workflows can be created by writing a Python script.
+
+```
+from nlppln import WorkflowGenerator
+
+wf = WorkflowGenerator()
+wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
+
+txt_dir = wf.add_inputs(txt_dir='Directory')
+
+frogout = wf.frog_dir(dir_in=txt_dir)
+saf = wf.frog_to_saf(in_files=frogout)
+ner_stats = wf.save_ner_data(in_files=saf)
+new_saf = wf.replace_ner(metadata=ner_stats, in_files=saf)
+txt = wf.saf_to_txt(in_files=new_saf)
+
+wf.add_outputs(ner_stats=ner_stats, txt=txt)
+
+wf.save('anonymize.cwl')
+```
+
+Additional processing steps can be loaded using:
+
+```
+from nlppln import WorkflowGenerator
+
+wf = WorkflowGenerator()
+wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
+```
+
+To load a single cwl file, do:
+```
+wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
+```
+
+See [scriptcwl](https://github.com/NLeSC/scriptcwl) for more information on creating
+workflows.
 
 ## Workflows
 
