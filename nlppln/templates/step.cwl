@@ -16,32 +16,32 @@ arguments:
 
 inputs:
 {% if meta_in %}
-- id: meta_in
-  type: File
-  inputBinding:
-    position: 1
+  meta_in:
+    type: File
+    inputBinding:
+      position: 1
 {% endif %}
 {% if inputs %}
-- id: in_files
-  type:
-    type: array
-    items: File
-  inputBinding:
-    position: 2
+  in_files:
+    type:
+      type: array
+      items: File
+    inputBinding:
+      position: 2
 {% endif %}
 
 outputs:
 {% if outputs %}
-- id: out_files
-  type:
-    type: array
-    items: File
-  outputBinding:
-    glob: "*.{{extension}}"
+  out_files:
+    type:
+      type: array
+      items: File
+    outputBinding:
+      glob: "*.{{extension}}"
 {% endif %}
 {% if meta_out %}
-- id: metadata_out
-  type: File
-  outputBinding:
-    glob: "{{meta_out_file}}"
+  metadata_out:
+    type: File
+    outputBinding:
+      glob: "{{meta_out_file}}"
 {% endif %}
