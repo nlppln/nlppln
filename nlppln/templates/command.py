@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import click
 import codecs
+{% if outputs %}import os{% endif %}
 
 {% if outputs or meta_out %}
 from nlppln.utils import create_dirs{% if outputs %}, out_file_name{% endif %}
@@ -16,7 +17,7 @@ from nlppln.utils import create_dirs{% if outputs %}, out_file_name{% endif %}
 @click.argument('in_files', nargs=-1, type=click.Path(exists=True))
 {% endif %}
 {% if outputs %}
-@click.argument('out_dir', nargs=1, type=click.Path())
+@click.option('--out_dir', '-o', default=os.getcwd(), nargs=1, type=click.Path())
 {% endif %}
 {% if meta_out %}
 @click.argument('meta_out', nargs=1, type=click.Path())

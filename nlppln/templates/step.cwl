@@ -2,14 +2,8 @@
 cwlVersion: cwl:v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.{{command_name}}"]
-{% if outputs or meta_out %}
-arguments:
-{% endif %}
-{% if outputs %}
-  - valueFrom: $(runtime.outdir)
-    position: 3
-{% endif %}
 {% if meta_out %}
+arguments:
   - valueFrom: $(runtime.outdir)/{{meta_out_file}}
     position: 4
 {% endif %}
@@ -28,6 +22,13 @@ inputs:
       items: File
     inputBinding:
       position: 2
+{% endif %}
+{% if outputs %}
+  out_dir:
+    type: Directory?
+    inputBinding:
+      prefix: --out_dir=
+      separate: false
 {% endif %}
 
 outputs:
