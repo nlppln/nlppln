@@ -2,9 +2,6 @@
 cwlVersion: cwl:v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.apachetika"]
-arguments:
-  - valueFrom: $(runtime.outdir)
-    position: 3
 
 inputs:
   in_files:
@@ -17,6 +14,11 @@ inputs:
     type: string?
     inputBinding:
       prefix: --tika_server=
+      separate: false
+  out_dir:
+    type: Directory?
+    inputBinding:
+      prefix: --out_dir=
       separate: false
 
 outputs:
