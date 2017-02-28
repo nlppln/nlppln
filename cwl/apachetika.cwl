@@ -7,22 +7,22 @@ arguments:
     position: 3
 
 inputs:
-- id: in_files
-  type:
-    type: array
-    items: File
-  inputBinding:
-    position: 2
-- id: tika_server
-  type: string?
-  inputBinding:
-    prefix: --tika_server=
-    separate: false
+  in_files:
+    type:
+      type: array
+      items: File
+    inputBinding:
+      position: 2
+  tika_server:
+    type: string?
+    inputBinding:
+      prefix: --tika_server=
+      separate: false
 
 outputs:
-- id: out_files
-  type:
-    type: array
-    items: File
-  outputBinding:
-    glob: "*.txt"
+  out_files:
+    type:
+      type: array
+      items: File
+    outputBinding:
+      glob: "*.txt"
