@@ -74,11 +74,12 @@ def command(liwc_dict, in_files, encoding):
 
     # sum over categories
     # http://stackoverflow.com/questions/37013115/how-to-read-traverse-slice-scipy-sparse-matrices-lil-csr-coo-dok-faster
+    word_counts_csc = word_counts.tocsc()
     for word, categories in liwc.iteritems():
         w_idx = count_vect.vocabulary_.get(word)
         col = np.zeros(len(in_files))
-        A = word_counts.getcol(w_idx).tocoo()
-        for i, j, d in zip(A.row, A.col, A.data):
+        A = word_counts_csc.getcol(w_idx)
+        for i, d in zip(A.indices, A.data):
             col[i] = d
 
         for cat in categories:
