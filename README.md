@@ -85,7 +85,7 @@ Save cwl step to [cwl/steps/command.cwl]:
 
 Workflows can be created by writing a Python script.
 
-```
+```python
 from nlppln import WorkflowGenerator
 
 wf = WorkflowGenerator()
@@ -106,7 +106,7 @@ wf.save('anonymize.cwl')
 
 Additional processing steps can be loaded using:
 
-```
+```python
 from nlppln import WorkflowGenerator
 
 wf = WorkflowGenerator()
@@ -114,7 +114,7 @@ wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
 ```
 
 To load a single cwl file, do:
-```
+```python
 wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
 ```
 
