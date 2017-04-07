@@ -21,7 +21,7 @@ We recommend installing `nlppln` in a
 pip install nlppln
 ```
 
-Tools can be run by using the Python -m option, e.g. `python -m nlppln.apachetika <INPUTDIR> <OUTPUTDIR>`.
+Tools can be run by using the Python -m option, e.g. `python -m nlppln.commands.apachetika <INPUTDIR> <OUTPUTDIR>`.
 
 To run CWL workflows created with `nlppln`, install a cwl-runner (`pip install
 cwlref-runner`) and [Docker](https://docs.docker.com/engine/installation/).
@@ -141,7 +141,7 @@ Currently, the GUI allows users to inspect the results of named entity recogniti
 
 Command:
 
-    python -m nlppln.inspect_ne <META IN> <IN FILES>
+    python -m nlppln.commands.inspect_ne <META IN> <IN FILES>
 
 Results can be inspected at http://localhost:5000/ (the browser is started automatically).
 For development, start the GUI with `python -m nlppln.gui.server <META IN> <IN FILES>`.
