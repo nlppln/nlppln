@@ -25,7 +25,7 @@ We recommend installing `nlppln` in a
 pip install nlppln
 ```
 
-Tools can be run by using the Python -m option, e.g. `python -m nlppln.apachetika <INPUTDIR> <OUTPUTDIR>`.
+Tools can be run by using the Python -m option, e.g. `python -m nlppln.commands.apachetika <INPUTDIR> <OUTPUTDIR>`.
 
 The CWL specifications of tools and workflows are not included if you install
 `nlppln` with pip. If you want to run tools and workflows, please download the
@@ -98,7 +98,7 @@ Save cwl step to [cwl/steps/command.cwl]:
 
 Workflows can be created by writing a Python script.
 
-```
+```python
 from nlppln import WorkflowGenerator
 
 wf = WorkflowGenerator()
@@ -119,7 +119,7 @@ wf.save('anonymize.cwl')
 
 Additional processing steps can be loaded using:
 
-```
+```python
 from nlppln import WorkflowGenerator
 
 wf = WorkflowGenerator()
@@ -127,7 +127,7 @@ wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
 ```
 
 To load a single cwl file, do:
-```
+```python
 wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
 ```
 
@@ -154,7 +154,7 @@ Currently, the GUI allows users to inspect the results of named entity recogniti
 
 Command:
 
-    python -m nlppln.inspect_ne <META IN> <IN FILES>
+    python -m nlppln.commands.inspect_ne <META IN> <IN FILES>
 
 Results can be inspected at http://localhost:5000/ (the browser is started automatically).
 For development, start the GUI with `python -m nlppln.gui.server <META IN> <IN FILES>`.
