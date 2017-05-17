@@ -16,7 +16,7 @@ package for creating command line interfaces.
 
 Install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git),
 [Python](https://www.python.org/downloads/) 2.7 and [pip](https://pip.pypa.io/en/stable/installing/). (You also may need to install
-  setuptools (`pip install setuptools`))
+  setuptools (`pip install setuptools`)).
 
 We recommend installing `nlppln` in a
 [virtual environment](https://virtualenv.pypa.io/en/stable/) (`pip install virtualenv`).
@@ -128,7 +128,7 @@ wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
 
 To load a single cwl file, do:
 ```python
-wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
+wf.load(step_file='/path/to/step_or_workflow.cwl')
 ```
 
 See [scriptcwl](https://github.com/NLeSC/scriptcwl) for more information on creating
