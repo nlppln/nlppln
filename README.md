@@ -8,11 +8,15 @@ wrap existing NLP functionality.
 The command line tools are made with [Click](http://click.pocoo.org), a Python
 package for creating command line interfaces.
 
+**Please note**: CWL is not yet compatible with
+[Python 3](https://github.com/common-workflow-language/cwltool/issues/310) and
+[Windows](https://github.com/common-workflow-language/cwltool/issues/340).
+
 ## Installation
 
 Install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git),
-[Python](https://www.python.org/downloads/) 2.7 (feel free to try using `nlppln`
-with Python 3) and [pip](https://pip.pypa.io/en/stable/installing/).
+[Python](https://www.python.org/downloads/) 2.7 and [pip](https://pip.pypa.io/en/stable/installing/). (You also may need to install
+  setuptools (`pip install setuptools`))
 
 We recommend installing `nlppln` in a
 [virtual environment](https://virtualenv.pypa.io/en/stable/) (`pip install virtualenv`).
@@ -22,6 +26,11 @@ pip install nlppln
 ```
 
 Tools can be run by using the Python -m option, e.g. `python -m nlppln.apachetika <INPUTDIR> <OUTPUTDIR>`.
+
+The CWL specifications of tools and workflows are not included if you install
+`nlppln` with pip. If you want to run tools and workflows, please download the
+(top-level) [cwl directory](https://github.com/WhatWorksWhenForWhom/nlppln/tree/master/cwl)
+and put them somewhere on your machine.
 
 To run CWL workflows created with `nlppln`, install a cwl-runner (`pip install
 cwlref-runner`) and [Docker](https://docs.docker.com/engine/installation/).
@@ -39,6 +48,10 @@ git checkout develop
 pip install -r requirements.txt
 python setup.py develop
 ```
+
+When installing in development mode, you don't need to downaload the CWL
+specifications of tools and workflows separately, because they are included in the
+source code. They can be found in the top-level [cwl directory](https://github.com/WhatWorksWhenForWhom/nlppln/tree/master/cwl) .
 
 For the GUI (currently, the GUI is available only in development mode):
 
