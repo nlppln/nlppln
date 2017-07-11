@@ -29,7 +29,7 @@ def nerstats(input_files, output_file):
         frames.append(pd.DataFrame(data=data))
 
     df = pd.concat(frames, ignore_index=True)
-    df.to_csv(output_file)
+    df.to_csv(output_file, encoding='utf-8')
 
 
 if __name__ == '__main__':
