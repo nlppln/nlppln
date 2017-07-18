@@ -29,18 +29,19 @@ def command(ner_csv_file, input_files, output_dir, mode):
             saf = json.load(f)
 
         bn = os.path.basename(fi)
-        df = grouped.get_group(bn).set_index('w_id')
-        ner_data = df.to_dict()
+        if bn in grouped.groups.keys():
+            df = grouped.get_group(bn).set_index('w_id')
+            ner_data = df.to_dict()
 
-        for t in saf['tokens']:
-            if t['id'] in ner_data['text'].keys():
-                if mode == 'replace':
-                    r = ner_data['ner'][t['id']]
-                    t['word'] = r
-                    t['lemma'] = r
-                elif mode == 'delete':
-                    t['word'] = ''
-                    t['lemma'] = ''
+            for t in saf['tokens']:
+                if t['id'] in ner_data['text'].keys():
+                    if mode == 'replace':
+                        r = ner_data['ner'][t['id']]
+                        t['word'] = r
+                        t['lemma'] = r
+                    elif mode == 'delete':
+                        t['word'] = ''
+                        t['lemma'] = ''
 
         out_file = os.path.join(output_dir, bn)
         with codecs.open(out_file, 'wb', encoding='utf-8') as f:
