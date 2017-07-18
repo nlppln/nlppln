@@ -6,17 +6,18 @@ arguments:
   - prefix: --outputdir=
     separate: false
     valueFrom: $(runtime.outdir)
+  - prefix: --testdir=
+    separate: false
+    valueFrom: $(runtime.outdir)
 hints:
   - class: DockerRequirement
     dockerPull: proycon/lamachine
+requirements:
+  InitialWorkDirRequirement:
+    listing: $(inputs.in_files)
 inputs:
-  - id: dir_in
-    type: Directory
-    inputBinding:
-      position: 1
-      prefix: --testdir=
-      separate: false
-  - id: skip
+  in_files: File[]
+  skip:
     type: string?
     inputBinding:
       position: 2

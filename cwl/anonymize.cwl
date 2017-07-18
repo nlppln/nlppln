@@ -1,7 +1,8 @@
 cwlVersion: v1.0
 class: Workflow
+
 inputs:
-  txt-dir: Directory
+  in_files: File[]
   mode: string?
 
 outputs:
@@ -19,7 +20,7 @@ steps:
   frog-ner:
     run: frog-dir.cwl
     in:
-      dir_in: txt-dir
+      in_files: in_files
     out: [frogout]
 
   frog-to-saf:
