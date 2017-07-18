@@ -22,6 +22,9 @@ def command(dir_in, recursive):
             if os.path.isfile(fi):
                 files_out.append(cwl_file(fi))
 
+    # order alphabetically on file name
+    files_out = sorted(files_out, key=lambda x: x.get('path'))
+
     stdout_text = click.get_text_stream('stdout')
     stdout_text.write(json.dumps({'out_files': files_out}))
 
