@@ -26,10 +26,12 @@ def to_bool(v):
 def command():
     """Generate a cwl file that specifies an nlppln processing step.
     """
-    script = click.prompt('Generate python command?', default='y')
+    script = click.prompt('Generate python command?', default='y',
+                          type=click.Choice(['y', 'n']))
     script = to_bool(script)
 
-    step = click.prompt('Generate cwl step?', default='y')
+    step = click.prompt('Generate cwl step?', default='y',
+                        type=click.Choice(['y', 'n']))
     step = to_bool(step)
 
     if not script and not step:
@@ -38,13 +40,16 @@ def command():
 
     cname = click.prompt('Command name', default='command')
 
-    meta_in = click.prompt('Metadata input file?', default='n')
+    meta_in = click.prompt('Metadata input file?', default='n',
+                           type=click.Choice(['y', 'n']))
     meta_in = to_bool(meta_in)
 
-    inputs = click.prompt('Multiple input files?', default='y')
+    inputs = click.prompt('Multiple input files?', default='y',
+                          type=click.Choice(['y', 'n']))
     inputs = to_bool(inputs)
 
-    outputs = click.prompt('Multiple output files?', default='y')
+    outputs = click.prompt('Multiple output files?', default='y',
+                           type=click.Choice(['y', 'n']))
     outputs = to_bool(outputs)
 
     ext = None
@@ -52,7 +57,8 @@ def command():
         glb = click.prompt('Glob pattern of output files?', default='*.json')
         ext = glb.split('.')[-1]
 
-    meta_out = click.prompt('Metadata output file?', default='n')
+    meta_out = click.prompt('Metadata output file?', default='n',
+                            type=click.Choice(['y', 'n']))
     meta_out = to_bool(meta_out)
 
     if script:
