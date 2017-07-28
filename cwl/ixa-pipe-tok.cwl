@@ -1,5 +1,5 @@
 #!/usr/bin/env cwlrunner
-cwlVersion: cwl:v1.0
+cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["java", "-jar", "/ixa-pipe-tok-exec.jar", "tok"]
 
