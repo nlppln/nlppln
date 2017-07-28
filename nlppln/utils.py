@@ -71,5 +71,17 @@ def copy_cwl_files(from_dir=CWL_PATH):
         fo = os.path.join(cwl_data_dir, os.path.basename(fi))
         shutil.copy2(fi, fo)
 
+
+def get_files(directory):
+    """Return a list of all files in the directory."""
+    files_out = []
+    for f in os.listdir(directory):
+        fi = os.path.join(directory, f)
+        if os.path.isfile(fi):
+            files_out.append(fi)
+
+    # order alphabetically on file name
+    return sorted(files_out)
+
 if __name__ == '__main__':
     copy_cwl_files()
