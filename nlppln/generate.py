@@ -49,14 +49,15 @@ def command():
 
     ext = None
     if outputs and step:
-        ext = click.prompt('Extension of output files?', default='json')
+        glb = click.prompt('Glob pattern of output files?', default='*.json')
+        ext = glb.split('.')[-1]
 
     meta_out = click.prompt('Metadata output file?', default='n')
     meta_out = to_bool(meta_out)
 
     if script:
         d = OrderedDict({'meta_in': meta_in,
-                         'in_files': inputs,
+                         'in_dir': inputs,
                          'out_dir': outputs,
                          'meta_out': meta_out})
         args = [a for a in d.keys() if d[a]]
@@ -83,7 +84,7 @@ def command():
 
         template = env.get_template('step.cwl')
 
-        r = template.render(command_name=cname, extension=ext, meta_in=meta_in,
+        r = template.render(command_name=cname, glob=glb, meta_in=meta_in,
                             inputs=inputs, outputs=outputs, meta_out=meta_out)
 
         default = 'cwl/{}.cwl'.format(cname.replace('_', '-'))

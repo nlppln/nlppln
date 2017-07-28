@@ -2,10 +2,14 @@
 cwlVersion: cwl:v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.{{command_name}}"]
-{% if meta_out %}
+{% if inputs %}
+requirements:
+  InitialWorkDirRequirement:
+    listing: $(inputs.in_files)
+
 arguments:
-  - valueFrom: $(runtime.outdir)/{{meta_out_file}}
-    position: 4
+  - valueFrom: $(runtime.outdir)
+    position: 1
 {% endif %}
 
 inputs:
@@ -17,28 +21,21 @@ inputs:
 {% endif %}
 {% if inputs %}
   in_files:
-    type:
-      type: array
-      items: File
-    inputBinding:
-      position: 2
+    type: File[]
 {% endif %}
 {% if outputs %}
   out_dir:
     type: Directory?
     inputBinding:
-      prefix: --out_dir=
-      separate: false
+      prefix: --out_dir
 {% endif %}
 
 outputs:
 {% if outputs %}
   out_files:
-    type:
-      type: array
-      items: File
+    type: File[]
     outputBinding:
-      glob: "*.{{extension}}"
+      glob: "{{glob}}"
 {% endif %}
 {% if meta_out %}
   metadata_out:
