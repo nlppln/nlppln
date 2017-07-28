@@ -22,7 +22,7 @@ from nlppln.utils import create_dirs{% if outputs %}, out_file_name{% endif %}
 {% if meta_out %}
 @click.argument('meta_out', nargs=1, type=click.Path())
 {% endif %}
-def command({{args}}):
+def {{command_name}}({{args}}):
 {% if outputs %}
     create_dirs(out_dir)
 {% endif %}
@@ -50,4 +50,4 @@ def command({{args}}):
 
 
 if __name__ == '__main__':
-    command()
+    {{command_name}}()
