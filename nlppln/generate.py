@@ -53,6 +53,7 @@ def command():
     outputs = to_bool(outputs)
 
     ext = None
+    glb = None
     if outputs and step:
         glb = click.prompt('Glob pattern of output files?', default='*.json')
         ext = glb.split('.')[-1]
@@ -61,12 +62,19 @@ def command():
                             type=click.Choice(['y', 'n']))
     meta_out = to_bool(meta_out)
 
+    if meta_out:
+        meta_out_file = click.prompt('Save metadata to?',
+                                     type=click.Path(),
+                                     default='metadata_out.csv')
+        if meta_out_file.startswith('/'):
+            meta_out_file = meta_out_file[1:]
+
     if script:
         d = OrderedDict({'meta_in': meta_in,
                          'in_dir': inputs,
-                         'out_dir': outputs,
-                         'meta_out': meta_out})
+                         'name': meta_out})
         args = [a for a in d.keys() if d[a]]
+        args.append('out_dir')
 
         template = env.get_template('command.py')
         r = template.render(command_name=cname, extension=ext, meta_in=meta_in,
@@ -81,17 +89,11 @@ def command():
             f.write(r)
 
     if step:
-        if meta_out:
-            meta_out_file = click.prompt('Save metadata to?',
-                                         type=click.Path(),
-                                         default='metadata_out.csv')
-            if meta_out_file.startswith('/'):
-                meta_out_file = meta_out_file[1:]
-
         template = env.get_template('step.cwl')
 
         r = template.render(command_name=cname, glob=glb, meta_in=meta_in,
-                            inputs=inputs, outputs=outputs, meta_out=meta_out)
+                            inputs=inputs, outputs=outputs, meta_out=meta_out,
+                            meta_out_file=meta_out_file)
 
         default = 'cwl/{}.cwl'.format(cname.replace('_', '-'))
         out_file = click.prompt('Save cwl step to', type=click.Path(),

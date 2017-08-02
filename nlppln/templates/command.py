@@ -1,33 +1,27 @@
 #!/usr/bin/env python
 import click
 import codecs
-{% if outputs %}import os{% endif %}
+{% if outputs or meta_out %}import os{% endif %}
 
 {% if outputs or meta_out %}
-from nlppln.utils import create_dirs{% if outputs %}, out_file_name{% endif %}
+from nlppln.utils import create_dirs{% if outputs or meta_out %}, out_file_name{% endif %}
 {% endif %}
-
 
 
 @click.command()
 {% if meta_in %}
-@click.argument('meta_in', type=click.Path(exists=True))
+@click.argument('meta_in', type=click.File(encoding='utf-8'))
 {% endif %}
 {% if inputs %}
 @click.argument('in_files', nargs=-1, type=click.Path(exists=True))
 {% endif %}
-{% if outputs %}
+{% if meta_out %}
+@click.option('--name', '-n', default='{{meta_out_file}}')
+{% endif %}
 @click.option('--out_dir', '-o', default=os.getcwd(), type=click.Path())
-{% endif %}
-{% if meta_out %}
-@click.argument('meta_out', nargs=1, type=click.Path())
-{% endif %}
 def {{command_name}}({{args}}):
-{% if outputs %}
+{% if outputs or meta_out %}
     create_dirs(out_dir)
-{% endif %}
-{% if meta_out %}
-    create_dirs(meta_out)
 {% endif %}
 
 {% if inputs %}
@@ -40,11 +34,12 @@ def {{command_name}}({{args}}):
         out_file = out_file_name(out_dir, fi, '{{extension}}')
         with codecs.open(out_file, 'wb', encoding='utf-8') as f:
             pass
+
 {% endif %}
 {% endif %}
 {% if meta_out %}
-
-    with codecs.open(meta_out, 'wb', encoding='utf-8') as f:
+    out_file = out_file_name(out_dir, name)
+    with codecs.open(out_file, 'wb', encoding='utf-8') as f:
         pass
 {% endif %}
 

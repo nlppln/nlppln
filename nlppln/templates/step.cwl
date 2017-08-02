@@ -23,12 +23,6 @@ inputs:
   in_files:
     type: File[]
 {% endif %}
-{% if outputs %}
-  out_dir:
-    type: Directory?
-    inputBinding:
-      prefix: --out_dir
-{% endif %}
 
 outputs:
 {% if outputs %}
