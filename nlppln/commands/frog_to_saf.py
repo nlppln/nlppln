@@ -41,9 +41,9 @@ def parse_frog(lines):
             tid, token, lemma, morph, pos, conf, ne, _, parent, rel = parts
             if rel:
                 rel = (rel, int(parent) - 1)
-            result = dict(id=i, sentence=sid, word=token, lemma=lemma,
-                          pos=pos, pos_confidence=float(conf),
-                          rel=rel)
+            word = u' '.join(token.split(u'_'))
+            result = dict(id=i, sentence=sid, word=word, lemma=lemma, pos=pos,
+                          pos_confidence=float(conf), rel=rel)
             if ne != 'O':
                 # NER label from BIO tags
                 result["ne"] = ne.split('_', 1)[0][2:]
@@ -79,7 +79,7 @@ def frog2saf(input_files, output_dir):
     create_dirs(output_dir)
 
     for fi in input_files:
-        with codecs.open(fi) as f:
+        with codecs.open(fi, encoding='utf-8') as f:
             lines = f.readlines()
             lines = [line.strip() for line in lines]
         saf_data = frog_to_saf(parse_frog(lines))
