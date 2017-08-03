@@ -30,14 +30,11 @@ def command(input_files, output_dir, mode):
                 s_id = t['sentence']
                 sentence = []
             elif t['sentence'] != s_id:
-                lines.append(u''.join(sentence).strip())
+                lines.append(u' '.join(sentence))
                 sentence = []
                 s_id = t['sentence']
 
-            if t.get('pos1') == '.':
-                sentence.append(t[mode])
-            else:
-                sentence.append(u' {}'.format(t[mode]))
+            sentence.append(t[mode])
 
         head, tail = os.path.split(fi)
         fname = tail.replace(os.path.splitext(tail)[1], '')
