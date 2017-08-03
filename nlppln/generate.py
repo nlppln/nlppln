@@ -79,7 +79,7 @@ def command():
         template = env.get_template('command.py')
         r = template.render(command_name=cname, extension=ext, meta_in=meta_in,
                             inputs=inputs, outputs=outputs, meta_out=meta_out,
-                            args=', '.join(args))
+                            args=', '.join(args), meta_out_file=meta_out_file)
 
         default = 'nlppln/commands/{}.py'.format(cname)
         out_file = click.prompt('Save python command to', type=click.Path(),
