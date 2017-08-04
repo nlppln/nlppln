@@ -35,10 +35,16 @@ steps:
       in_files: frog-to-saf/saf
     out: [ner_statistics]
 
+  filter-nes:
+    run: frog-filter-nes.cwl
+    in:
+      nerstats: save-ner-data/ner_statistics
+    out: [filtered_nerstats]
+
   replace-ner:
     run: replace-ner.cwl
     in:
-      metadata: save-ner-data/ner_statistics
+      metadata: filter-nes/filtered_nerstats
       in_files: frog-to-saf/saf
       mode: mode
     out: [out_files]
