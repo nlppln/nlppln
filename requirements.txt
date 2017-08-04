@@ -6,3 +6,7 @@ Flask-Bower==1.2.1
 docx2txt
 scriptcwl
 lxml
+tox
+pytest
+pytest-cov
+codacy-coverage
