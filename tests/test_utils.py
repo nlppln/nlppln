@@ -23,6 +23,13 @@ def test_out_file_name_same_ext():
     assert out_file_name(out_dir, fname) == '/home/jvdzwaan/data/foo.txt'
 
 
+def test_out_file_name_path():
+    out_dir = '/home/jvdzwaan/data/'
+    fname = '/other/path/foo.txt'
+
+    assert out_file_name(out_dir, fname) == '/home/jvdzwaan/data/foo.txt'
+
+
 def test_out_file_name_change_ext():
     out_dir = '/home/jvdzwaan/data/'
     fname = 'foo.txt'

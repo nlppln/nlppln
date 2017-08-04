@@ -28,9 +28,11 @@ def create_dirs(fname):
 def out_file_name(out_dir, fname, ext=None):
     """Return path of output file, given a directory, file name and extension.
 
+    If fname is a path, it is converted to its basename.
+
     Args:
         out_dir (str): path to the directory where output should be written.
-        fname (str): name of the input file.
+        fname (str): path to the input file.
         ext (str): file extension of the output file (defaults to None).
 
     Returns:
@@ -38,7 +40,7 @@ def out_file_name(out_dir, fname, ext=None):
             original extension is kept.
     """
     if ext is None:
-        return os.path.join(out_dir, fname)
+        return os.path.join(out_dir, os.path.basename(fname))
 
     fname = remove_ext(fname)
     return os.path.join(out_dir, '{}.{}'.format(fname, ext))
