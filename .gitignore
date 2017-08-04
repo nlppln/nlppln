@@ -5,12 +5,16 @@
 *.txt
 *.out
 *.csv
+*.xml
 
 !requirements.txt
 
-bower_components
-node_modules
 build
 dist
+.cache
+
+bower_components
+node_modules
 
 .coverage
+.tox
