@@ -12,3 +12,5 @@ bower_components
 node_modules
 build
 dist
+
+.coverage
