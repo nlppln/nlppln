@@ -3,9 +3,10 @@ import click
 import codecs
 {% if outputs or meta_out %}import os{% endif %}
 
-{% if outputs or meta_out %}
-from nlppln.utils import create_dirs{% if outputs or meta_out %}, out_file_name{% endif %}
+{% if outputs or meta_out or inputs %}
+from nlppln.utils import {% if outputs or meta_out %}create_dirs, out_file_name{% endif %}{% if inputs and (outputs or meta_out) %}, {% endif %}{% if inputs %}get_files{% endif %}
 {% endif %}
+
 
 
 @click.command()
@@ -13,7 +14,7 @@ from nlppln.utils import create_dirs{% if outputs or meta_out %}, out_file_name{
 @click.argument('meta_in', type=click.File(encoding='utf-8'))
 {% endif %}
 {% if inputs %}
-@click.argument('in_files', nargs=-1, type=click.Path(exists=True))
+@click.argument('in_dir', type=click.Path(exists=True))
 {% endif %}
 {% if meta_out %}
 @click.option('--name', '-n', default='{{meta_out_file}}')
@@ -41,8 +42,8 @@ def {{command_name}}({{args}}):
     out_file = out_file_name(out_dir, name)
     with codecs.open(out_file, 'wb', encoding='utf-8') as f:
         pass
-{% endif %}
 
+{% endif %}
 
 if __name__ == '__main__':
     {{command_name}}()

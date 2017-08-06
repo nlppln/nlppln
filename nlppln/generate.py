@@ -62,6 +62,7 @@ def command():
                             type=click.Choice(['y', 'n']))
     meta_out = to_bool(meta_out)
 
+    meta_out_file = None
     if meta_out:
         meta_out_file = click.prompt('Save metadata to?',
                                      type=click.Path(),
