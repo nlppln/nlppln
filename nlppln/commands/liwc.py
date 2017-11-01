@@ -33,9 +33,8 @@ def load_liwc_dict(dict_file, encoding):
     return liwc_dict, liwc_categories
 
 
-def liwc_word2re(word):
-    word = word.replace('*', '.*')
-    return re.compile(r'\b{}\b'.format(word.encode('utf-8')))
+def split(s):
+    return s.split()
 
 
 @click.command()
@@ -53,7 +52,7 @@ def command(liwc_dict, in_files, encoding, out_dir, name):
     result = pd.DataFrame(0, index=text_ids, columns=cols)
 
     # make vocabulary
-    count_vect = CountVectorizer(input='filename')
+    count_vect = CountVectorizer(input='filename', tokenizer=split)
     word_counts = count_vect.fit_transform(in_files)
 
     # get total number of words per text
