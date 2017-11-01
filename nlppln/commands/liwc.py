@@ -43,7 +43,9 @@ def liwc_word2re(word):
 @click.argument('in_files', nargs=-1, type=click.Path(exists=True))
 @click.option('--encoding', '-e', default='latin1',
               help='Encoding of LIWC dictionary.')
-def command(liwc_dict, in_files, encoding):
+@click.option('--out_dir', '-o', default=os.getcwd(), type=click.Path())
+@click.option('--name', '-n', default='liwc.csv')
+def command(liwc_dict, in_files, encoding, out_dir, name):
     liwc, liwc_categories = load_liwc_dict(liwc_dict, encoding)
 
     text_ids = [os.path.basename(fi) for fi in in_files]
@@ -89,7 +91,8 @@ def command(liwc_dict, in_files, encoding):
     result[lc] = result[lc].div(result['#words'], axis='index')
     result[lc] = result[lc]*100.0
 
-    result.to_csv('liwc.csv', encoding='utf-8')
+    out_file = os.path.join(out_dir, name)
+    result.to_csv(out_file, encoding='utf-8')
 
 
 if __name__ == '__main__':
