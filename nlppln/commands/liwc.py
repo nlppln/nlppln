@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 import click
 import codecs
-import re
 import os
 import pandas as pd
 import numpy as np
 
 from sklearn.feature_extraction.text import CountVectorizer
+
+from ..utils import create_dirs, get_files
 
 
 def load_liwc_dict(dict_file, encoding):
@@ -38,13 +39,17 @@ def split(s):
 
 
 @click.command()
+@click.argument('in_dir', type=click.Path(exists=True))
 @click.argument('liwc_dict', type=click.Path(exists=True))
-@click.argument('in_files', nargs=-1, type=click.Path(exists=True))
 @click.option('--encoding', '-e', default='latin1',
               help='Encoding of LIWC dictionary.')
 @click.option('--out_dir', '-o', default=os.getcwd(), type=click.Path())
 @click.option('--name', '-n', default='liwc.csv')
-def command(liwc_dict, in_files, encoding, out_dir, name):
+def command(in_dir, liwc_dict, encoding, out_dir, name):
+    create_dirs(out_dir)
+
+    in_files = get_files(in_dir)
+
     liwc, liwc_categories = load_liwc_dict(liwc_dict, encoding)
 
     text_ids = [os.path.basename(fi) for fi in in_files]
