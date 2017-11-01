@@ -4,12 +4,12 @@ class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.liwc"]
 
 inputs:
-  liwc_dict:
-    type: File
+  in_dir:
+    type: Directory
     inputBinding:
       position: 1
-  in_files:
-    type: File[]
+  liwc_dict:
+    type: File
     inputBinding:
       position: 2
   encoding:
@@ -21,4 +21,4 @@ outputs:
   liwc:
     type: File
     outputBinding:
-      glob: "liwc.csv"
+      glob: "*.csv"
