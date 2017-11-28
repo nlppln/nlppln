@@ -2,9 +2,35 @@
 
 ## Unreleased
 
+### Added
+
+- CWL files for NLP functionality (so they don't have to be downloaded separately)
+- Dockerfile to run nlppln on Windows
+- Tests
+- Command to copy and rename files (`copy-and-rename-files.cwl`)
+- Command to generate data for TextDNA visualization (`textDNA-generate.cwl`)
+- Command to normalize whitespace and punctuation in text files (`normalize-whitespace-punctuation.cwl`)
+- Command to run LIWC on tokenized text (`liwc_tokenized.cwl`)
+- Command to save a directory to a subdirectory (`save-dir-to-subdir.cwl`)
+- Command to save a list of files to a directory (`save-files-to-dir.cwl`)
+- Command to merge csv files (`merge-csv.cwl`)
+- Command to filter Named Entities extracted with frog (`frog-filter-nes.cwl`)
+- Command to list al files in a directory (`ls.cwl`)
+- Command to lowercase a text (`lowercase.cwl`)
+- Command to clear xml elements (`clear-xml-elements.cwl`)
+- Command to tokenize with [pattern.nl](https://www.clips.uantwerpen.be/pattern) (`pattern-nl.cwl`)
+
+### Changed
+
+- Command `saf_to_text.py` (`saf-to-text.cwl`) outputs space separated sentences
+- Give Python commands a meaningful name (#5)
+- Use `InitialWorkDirRequirement` instead of list of input files (#1 #16)
+
 ### Removed
 
 - GUI (users are recommended to use Juyter notebooks for inspection and analysis tasks)
+- Functionality to generate boilerplate Python commands and CWL files (moved to https://github.com/nlppln/nlppln-gen)
+- Command to create a file list (use cwltool option `--make-template` instead) (#14)
 
 ## 0.1.0
 
