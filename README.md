@@ -1,5 +1,10 @@
 # NLP Pipeline
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/24cd15fe1d9e4a51ab4be8c247e95c47)](https://www.codacy.com/app/jvdzwaan/nlppln?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nlppln/nlppln&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/nlppln/nlppln.svg?branch=tests)](https://travis-ci.org/nlppln/nlppln)
+[![PyPI version](https://badge.fury.io/py/nlppln.svg)](https://badge.fury.io/py/nlppln)
+[![PyPI](https://img.shields.io/pypi/pyversions/nlppln.svg)](https://pypi.python.org/pypi/nlppln)
+
 A python package to create NLP pipelines using [Common Workflow Language](http://www.commonwl.org/) (CWL).
 
 Basically, it provides python scripts for common NLP tasks that can be run as
