@@ -2,6 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/24cd15fe1d9e4a51ab4be8c247e95c47)](https://www.codacy.com/app/jvdzwaan/nlppln?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nlppln/nlppln&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/nlppln/nlppln.svg?branch=tests)](https://travis-ci.org/nlppln/nlppln)
+[![Documentation Status](https://readthedocs.org/projects/nlppln/badge/?version=latest)](http://nlppln.readthedocs.io/en/latest/?badge=latest)
 [![PyPI version](https://badge.fury.io/py/nlppln.svg)](https://badge.fury.io/py/nlppln)
 [![PyPI](https://img.shields.io/pypi/pyversions/nlppln.svg)](https://pypi.python.org/pypi/nlppln)
 
@@ -13,7 +14,7 @@ wrap existing NLP functionality.
 The command line tools are made with [Click](http://click.pocoo.org), a Python
 package for creating command line interfaces.
 
-For creating new (e.g., project specific) NLP functionality, you can use [nlppln-gen]()
+For creating new (e.g., project specific) NLP functionality, you can use [nlppln-gen](https://github.com/nlppln/nlppln-gen)
 to generate boilerplate (i.e., empty) command line tools and CWL specifications.
 
 ## Installation
