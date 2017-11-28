@@ -2,4 +2,4 @@ include LICENSE
 include requirements.txt
 include README.md
 include .bowerrc
-recursive-include cwl *
+recursive-include nlppln/cwl *
