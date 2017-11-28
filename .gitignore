@@ -1,5 +1,7 @@
 *.pyc
 *.egg-info
+*.eggs
+build
 
 # data
 *.txt
@@ -9,12 +11,18 @@
 
 !requirements.txt
 
-build
 dist
 .cache
 
 bower_components
 node_modules
 
+htmlcov
 .coverage
 .tox
+
+docs/_build
+docs/apidocs
+docs/modules.rst
+docs/nlppln.rst
+docs/nlppln.commands.rst
