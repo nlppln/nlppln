@@ -5,6 +5,7 @@
 [![Documentation Status](https://readthedocs.org/projects/nlppln/badge/?version=latest)](http://nlppln.readthedocs.io/en/latest/?badge=latest)
 [![PyPI version](https://badge.fury.io/py/nlppln.svg)](https://badge.fury.io/py/nlppln)
 [![PyPI](https://img.shields.io/pypi/pyversions/nlppln.svg)](https://pypi.python.org/pypi/nlppln)
+[![Documentation Status](http://readthedocs.org/projects/nlppln/badge/?version=latest)](http://nlppln.readthedocs.io/en/latest/?badge=latest)
 
 A python package to create NLP pipelines using [Common Workflow Language](http://www.commonwl.org/) (CWL).
 
