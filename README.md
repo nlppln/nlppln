@@ -53,23 +53,6 @@ When installing in development mode, you don't need to downaload the CWL
 specifications of tools and workflows separately, because they are included in the
 source code. They can be found in the top-level [cwl directory](https://github.com/WhatWorksWhenForWhom/nlppln/tree/master/cwl) .
 
-For the GUI (currently, the GUI is available only in development mode):
-
-Install [nodejs](https://nodejs.org/en/download/) (or via
-[package manager](https://nodejs.org/en/download/package-manager/)) and
-[npm](https://docs.npmjs.com/getting-started/installing-node)
-
-Install [bower](https://bower.io/)
-```
-npm install -g bower
-```
-
-Then type:
-```
-npm install
-bower install
-```
-
 ## Generating command line NLP tool boilerplate and cwl steps
 
 NLP Pipeline contains functionality to generate command line NLP tools and CWL

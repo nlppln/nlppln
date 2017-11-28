@@ -1,5 +1,11 @@
 # Change Log
 
+## Unreleased
+
+### Removed
+
+- GUI (users are recommended to use Juyter notebooks for inspection and analysis tasks)
+
 ## 0.1.0
 
 ### Added
