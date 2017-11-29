@@ -8,6 +8,7 @@
 - Dockerfile to run nlppln on Windows
 - Tests
 - Python 3 support
+- Save workflows with inline steps (default), or relative paths
 - Command to copy and rename files (`copy-and-rename-files.cwl`)
 - Command to generate data for TextDNA visualization (`textDNA-generate.cwl`)
 - Command to normalize whitespace and punctuation in text files (`normalize-whitespace-punctuation.cwl`)
