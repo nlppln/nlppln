@@ -9,6 +9,7 @@
 - Tests
 - Python 3 support
 - Save workflows with inline steps (default), or relative paths
+- Documentation on [Read the Docs](http://nlppln.readthedocs.io/en/latest/)
 - Command to copy and rename files (`copy-and-rename-files.cwl`)
 - Command to generate data for TextDNA visualization (`textDNA-generate.cwl`)
 - Command to normalize whitespace and punctuation in text files (`normalize-whitespace-punctuation.cwl`)
