@@ -19,6 +19,9 @@ Pipelines or workflows can be created by writing a Python script:
 
 		wf.save('anonymize.cwl')
 
+This workflow finds named entities in all Dutch text files in a directory. Named 
+entities are replaced with their type (PER, LOC, ORG). The output consists of
+text files and a csv file that contains the named entities that have been replaced.
 
 The workflow creation functionality in ``nlppln`` is provided by a library called
 `scriptcwl <https://github.com/NLeSC/scriptcwl>`_. For a more detailed explanation
