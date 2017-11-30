@@ -45,7 +45,7 @@ cwltool anonymize.cwl --txt_dir /path/to/directory/with/txt/files/
 For creating new (e.g., project specific) NLP functionality, you can use [nlppln-gen](https://github.com/nlppln/nlppln-gen>)
 to generate boilerplate (i.e., empty) command line tools and CWL specifications.
 
-More detailed information can be found in the [documentation](http://nlppln.readthedocs.io/en/latest/).
+The full documentation can be found on [Read the Docs](http://nlppln.readthedocs.io/en/latest/).
 
 ## Installation
 
