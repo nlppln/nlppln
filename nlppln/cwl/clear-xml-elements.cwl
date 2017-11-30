@@ -14,11 +14,6 @@ inputs:
       items: string
       inputBinding:
         prefix: -e
-  out_dir:
-    type: Directory?
-    inputBinding:
-      prefix: --out_dir
-      separate: false
 
 outputs:
   out_file:

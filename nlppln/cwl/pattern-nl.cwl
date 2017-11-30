@@ -10,11 +10,6 @@ inputs:
       items: File
     inputBinding:
       position: 2
-  out_dir:
-    type: Directory?
-    inputBinding:
-      prefix: --out_dir=
-      separate: false
 
 outputs:
   out_files:
@@ -23,4 +18,3 @@ outputs:
       items: File
     outputBinding:
       glob: "*.json"
-

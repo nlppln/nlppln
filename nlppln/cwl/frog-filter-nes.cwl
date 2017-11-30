@@ -12,10 +12,6 @@ inputs:
     type: string?
     inputBinding:
       prefix: --name
-  out_dir:
-    type: Directory?
-    inputBinding:
-      prefix: --out_dir
 
 outputs:
   filtered_nerstats:

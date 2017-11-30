@@ -15,11 +15,6 @@ inputs:
     inputBinding:
       prefix: --tika_server=
       separate: false
-  out_dir:
-    type: Directory?
-    inputBinding:
-      prefix: --out_dir=
-      separate: false
 
 outputs:
   out_files:
