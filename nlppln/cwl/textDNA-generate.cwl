@@ -7,13 +7,13 @@ baseCommand: ["python", "-m", "textdnaDataGen.generate"]
 
 hints:
   - class: DockerRequirement
-    dockerPull: localhost:5000/textdna-data
+    dockerPull: nlppln/textdna-create-datasets
 
 doc: |
   Generate data to vizualize using `TextDNA <http://graphics.cs.wisc.edu/Vis/SequenceSurveyor/TextDNA.html>`_.
 
 inputs:
-  dir_in:
+  in_dir:
     type: Directory
     inputBinding:
       position: 1
