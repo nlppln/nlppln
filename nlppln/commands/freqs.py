@@ -5,10 +5,12 @@ from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 import pandas as pd
 
+
 def make_corpus(doc_files):
     for doc in doc_files:
         with codecs.open(doc, encoding='utf-8') as f:
             yield f.read()
+
 
 @click.command()
 @click.argument('in_files', nargs=-1, type=click.Path(exists=True))
@@ -23,7 +25,6 @@ def freqs(in_files, output_file):
     vocab_df['rank'] = vocab_df['freq'].rank(method='first', ascending=False)
     vocab_df = vocab_df.sort('rank')
     vocab_df.to_csv(output_file, encoding='utf-8', index=False)
-
 
 
 if __name__ == '__main__':
