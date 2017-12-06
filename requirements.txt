@@ -1,11 +1,3 @@
-scipy>=0.19
-pandas
-Flask==0.11.1
-Flask-Bootstrap==3.3.6.0
-Flask-Bower==1.2.1
-scriptcwl
-lxml
-tox
-pytest
-pytest-cov
-codacy-coverage
+--index-url https://pypi.python.org/simple/
+
+-e .
