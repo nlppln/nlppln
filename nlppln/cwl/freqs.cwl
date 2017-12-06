@@ -3,6 +3,9 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.freqs"]
 
+doc: |
+  Return a sorted list of word freqencies in the corpus.
+
 arguments:
   - valueFrom: $(runtime.outdir)/freqs.csv
     position: 2

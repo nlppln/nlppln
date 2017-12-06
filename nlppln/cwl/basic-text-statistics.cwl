@@ -3,6 +3,9 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.basic_text_statistics"]
 
+doc: |
+  Output a csv file with basic text statistics (#tokens, #sentences).
+
 inputs:
   in_files:
     type:

@@ -7,6 +7,11 @@ arguments:
   - valueFrom: $(runtime.outdir)/freqs.csv
     position: 2
 
+doc: |
+  Return csv file wit a ranked list of (word, pos) pairs.
+
+  The list can be of (word, pos) pairs of (lemma, pos) pairs.
+
 inputs:
 - id: in_files
   type:

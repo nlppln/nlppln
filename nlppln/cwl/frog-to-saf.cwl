@@ -6,6 +6,10 @@ arguments:
   - valueFrom: $(runtime.outdir)
     position: 2
 
+doc: |
+  Convert `frog <https://languagemachines.github.io/frog/>`_ csv output to
+  `saf <https://github.com/vanatteveldt/saf>`_.
+
 inputs:
   - id: in_files
     type:

@@ -6,6 +6,8 @@ arguments:
   - valueFrom: $(runtime.outdir)
     position: 3
 
+doc: Extract text from an XML element and save it to a file.
+
 inputs:
 - id: in_files
   type: File
@@ -22,4 +24,3 @@ outputs:
   type: File
   outputBinding:
     glob: "*.txt"
-

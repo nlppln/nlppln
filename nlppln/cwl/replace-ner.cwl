@@ -5,6 +5,12 @@ baseCommand: ["python", "-m", "nlppln.commands.replace_ner"]
 arguments:
   - valueFrom: $(runtime.outdir)
     position: 3
+
+doc: |
+  Replace named entities in `saf <https://github.com/vanatteveldt/saf>`_ files.
+
+  Named entities can be replaced with their type or deleted.
+
 inputs:
 - id: metadata
   type: File

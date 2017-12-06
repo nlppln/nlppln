@@ -5,6 +5,9 @@ class: ExpressionTool
 requirements:
   - class: InlineJavascriptRequirement
 
+doc: |
+  Save a list of files to a directory.
+
 inputs:
   in_files: File[]
   dir_name: string

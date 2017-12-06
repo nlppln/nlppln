@@ -9,6 +9,9 @@ hints:
   - class: DockerRequirement
     dockerPull: localhost:5000/textdna-data
 
+doc: |
+  Generate data to vizualize using `TextDNA <http://graphics.cs.wisc.edu/Vis/SequenceSurveyor/TextDNA.html>`_.
+
 inputs:
   dir_in:
     type: Directory

@@ -6,6 +6,9 @@ arguments:
   - valueFrom: $(runtime.outdir)
     position: 3
 
+doc: |
+  Download a file from the Internet.
+
 inputs:
 - id: urls
   type:

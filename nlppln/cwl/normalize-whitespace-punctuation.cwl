@@ -3,6 +3,12 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.normalize_whitespace_punctuation"]
 
+doc: |
+  Normalize whitespace and punctuation.
+
+  Replace multiple subsequent occurrences of whitespace characters and
+  punctuation with a single occurrence.
+
 inputs:
   meta_in:
     type: File

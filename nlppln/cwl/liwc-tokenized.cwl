@@ -3,6 +3,11 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.liwc"]
 
+doc: |
+  Apply `LIWC <http://liwc.net>`_ to a directory of tokenized text files.
+
+  The text files have to contain space separated tokens.
+
 inputs:
   in_dir:
     type: Directory

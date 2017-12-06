@@ -3,6 +3,9 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.clear_xml_elements"]
 
+doc: |
+  Remove specified XML elements from XML file.
+
 inputs:
   xml_file:
     type: File

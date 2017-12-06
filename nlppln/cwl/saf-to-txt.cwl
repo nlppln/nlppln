@@ -5,6 +5,10 @@ baseCommand: ["python", "-m", "nlppln.commands.saf_to_txt"]
 arguments:
   - valueFrom: $(runtime.outdir)
     position: 2
+
+doc: |
+  Convert `saf <https://github.com/vanatteveldt/saf>`_ to space separated tokens.
+
 inputs:
 - id: in_files
   type:

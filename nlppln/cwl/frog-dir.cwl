@@ -15,6 +15,10 @@ hints:
 requirements:
   InitialWorkDirRequirement:
     listing: $(inputs.in_files)
+
+doc: |
+  `Frog <https://languagemachines.github.io/frog/>`_ a directory of text files.
+
 inputs:
   in_files: File[]
   skip:

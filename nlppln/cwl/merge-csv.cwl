@@ -10,6 +10,8 @@ arguments:
   - valueFrom: $(runtime.outdir)
     position: 1
 
+doc: Merge csv files (with the same header) into a single csv file.
+
 inputs:
   in_files:
     type: File[]

@@ -5,6 +5,11 @@ class: ExpressionTool
 requirements:
   - class: InlineJavascriptRequirement
 
+doc: |
+  Save a directory to a subdirectory.
+
+  Puts ``inner_dir`` into the ``outer_dir``.
+
 inputs:
   inner_dir: Directory
   outer_dir: Directory

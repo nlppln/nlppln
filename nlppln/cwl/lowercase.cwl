@@ -3,6 +3,9 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.lowercase"]
 
+doc: |
+  Lowercase a text.
+
 inputs:
   in_file:
     type: File

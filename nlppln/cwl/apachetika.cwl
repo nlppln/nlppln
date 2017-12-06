@@ -3,6 +3,9 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.apachetika"]
 
+doc: |
+  Convert Word documents to text using `Apache Tika <https://tika.apache.org/>`_.
+
 inputs:
   in_files:
     type:

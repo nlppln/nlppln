@@ -7,6 +7,10 @@ hints:
   - class: DockerRequirement
     dockerPull: nlppln/ixa-pipe-tok-docker:1.8.5
 
+doc: |
+  Tokenize a text using `ixa-pipe-tok <https://github.com/ixa-ehu/ixa-pipe-tok>`_.
+
+
 inputs:
 - id: language
   type: string
