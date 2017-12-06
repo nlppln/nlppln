@@ -6,21 +6,21 @@ arguments:
   - prefix: --outputdir=
     separate: false
     valueFrom: $(runtime.outdir)
-  - prefix: --testdir=
-    separate: false
-    valueFrom: $(runtime.outdir)
-hints:
+
+requirements:
   - class: DockerRequirement
     dockerPull: proycon/lamachine
-requirements:
-  InitialWorkDirRequirement:
-    listing: $(inputs.in_files)
 
 doc: |
   `Frog <https://languagemachines.github.io/frog/>`_ a directory of text files.
 
 inputs:
-  in_files: File[]
+  in_dir:
+    type: Directory
+    inputBinding:
+      prefix: --testdir=
+      separate: false
+
   skip:
     type: string?
     inputBinding:

@@ -25,7 +25,7 @@ from nlppln import WorkflowGenerator
 with WorkflowGenerator() as wf:
   txt_dir = wf.add_inputs(txt_dir='Directory')
 
-  frogout = wf.frog_dir(dir_in=txt_dir)
+  frogout = wf.frog_dir(in_dir=txt_dir)
   saf = wf.frog_to_saf(in_files=frogout)
   ner_stats = wf.save_ner_data(in_files=saf)
   new_saf = wf.replace_ner(metadata=ner_stats, in_files=saf)
