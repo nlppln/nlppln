@@ -14,7 +14,7 @@ RUN apt-get update \
 		&& apt-get clean
 
 WORKDIR /code
-RUN git clone https://github.com/WhatWorksWhenForWhom/nlppln.git && cd nlppln && git checkout develop
+RUN git clone https://github.com/WhatWorksWhenForWhom/nlppln.git && cd nlppln
 
 WORKDIR /code/nlppln
 RUN pip install -e .
