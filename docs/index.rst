@@ -67,3 +67,4 @@ Contents
    installation
    creating_workflows
    running_workflows
+   tools

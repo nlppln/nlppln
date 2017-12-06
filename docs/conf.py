@@ -18,6 +18,9 @@
 #
 import os
 import sys
+import codecs
+import glob
+import ruamel.yaml as yaml
 
 from recommonmark.parser import CommonMarkParser
 
@@ -98,8 +101,32 @@ def run_apidoc(_):
     main(['-e', '-o', output_dir, module, '--force'])
 
 
+def generate_cwl_documentation(_):
+    cur_dir = os.path.abspath(os.path.dirname(__file__))
+    cwl_dir = os.path.join(cur_dir, '..', 'nlppln', 'cwl')
+
+    cwl_files = glob.glob(str(os.path.abspath(os.path.join(cwl_dir, '*.cwl'))))
+    # sort alphabetically
+    cwl_files.sort()
+
+    tools_file = os.path.join(cur_dir, 'tools.rst')
+    tool_template = '\n{}\n{}\n\n{}\n'
+    with codecs.open(tools_file, 'a', encoding='utf-8') as f:
+        for cwl in cwl_files:
+            tool_name = os.path.basename(cwl)
+            plusses = '+'*len(tool_name)
+            with codecs.open(cwl) as c:
+                try:
+                    cwl_yaml = yaml.load(c, Loader=yaml.RoundTripLoader)
+                    doc = cwl_yaml.get('doc', 'No documentation')
+                    f.write(tool_template.format(tool_name, plusses, doc))
+                except yaml.YAMLError:
+                    pass
+
+
 def setup(app):
     app.connect('builder-inited', run_apidoc)
+    app.connect('builder-inited', generate_cwl_documentation)
 
 # -- Options for HTML output ----------------------------------------------
 
