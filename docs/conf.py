@@ -111,7 +111,9 @@ def generate_cwl_documentation(_):
 
     tools_file = os.path.join(cur_dir, 'tools.rst')
     tool_template = '\n{}\n{}\n\n{}\n'
-    with codecs.open(tools_file, 'a', encoding='utf-8') as f:
+    with codecs.open(tools_file, 'wb', encoding='utf-8') as f:
+        f.write('Tools\n=====\n')
+        f.write('\n``nlppln`` contains the following tools:\n')
         for cwl in cwl_files:
             tool_name = os.path.basename(cwl)
             plusses = '+'*len(tool_name)
