@@ -65,7 +65,23 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['scipy', 'pandas', 'scriptcwl<=0.6.0', 'lxml']
+    install_requires=[
+        'scipy',
+        'pandas',
+        'scriptcwl<=0.6.0',
+        'lxml'],
+    setup_requires=[
+        # dependency for `python setup.py test`
+        'pytest-runner',
+        # dependencies for `python setup.py build_sphinx`
+        'sphinx',
+        'recommonmark'
+    ],
+    tests_require=[
+        'pytest',
+        'pytest-cov',
+        'pycodestyle',
+    ]
 
     #scripts=['recipy-cmd']
 )
