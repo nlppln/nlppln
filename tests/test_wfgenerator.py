@@ -9,4 +9,4 @@ class TestWFGenerator(object):
         return WorkflowGenerator()
 
     def test_steps_in_library(self, wf):
-        assert len(wf.steps_library) > 0
+        assert len(wf.steps_library.steps) > 0
