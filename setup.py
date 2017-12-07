@@ -69,7 +69,11 @@ setup(
         'scipy',
         'pandas',
         'scriptcwl<=0.6.0',
-        'lxml'],
+        'lxml',
+        'beautifulsoup4',
+        'pyjq',
+        'sklearn',
+        'tika'],
     setup_requires=[
         # dependency for `python setup.py test`
         'pytest-runner',
