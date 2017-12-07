@@ -3,7 +3,8 @@ import os
 import shutil
 import glob
 
-from nlppln import CWL_PATH
+MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
+CWL_PATH = os.path.abspath(os.path.join(MODULE_PATH, 'cwl'))
 
 DEFAULT_DATA_DIR = '{}/.local/share/'.format(os.environ.get('HOME'))
 CWL_DATA_DIR_PREFIX = 'commonwl'
