@@ -23,6 +23,7 @@ import glob
 import ruamel.yaml as yaml
 
 from recommonmark.parser import CommonMarkParser
+from nlppln import WorkflowGenerator
 
 sys.path.insert(0, os.path.abspath('.'))
 
@@ -103,9 +104,10 @@ def run_apidoc(_):
 
 def generate_cwl_documentation(_):
     cur_dir = os.path.abspath(os.path.dirname(__file__))
-    cwl_dir = os.path.join(cur_dir, '..', 'nlppln', 'cwl')
 
-    cwl_files = glob.glob(str(os.path.abspath(os.path.join(cwl_dir, '*.cwl'))))
+    # find all cwl files
+    with WorkflowGenerator() as wf:
+        cwl_files = [step.run for step in wf.steps_library.steps.values()]
     # sort alphabetically
     cwl_files.sort()
 
