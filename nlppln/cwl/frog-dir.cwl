@@ -28,9 +28,7 @@ inputs:
       prefix: --skip=
       separate: false
 outputs:
-  - id: frogout
-    type:
-      type: array
-      items: File
+  frogout:
+    type: File[]
     outputBinding:
       glob: "*.out"

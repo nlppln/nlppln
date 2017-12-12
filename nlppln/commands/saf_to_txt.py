@@ -4,21 +4,24 @@ import os
 import codecs
 import json
 
+from nlppln.utils import create_dirs, out_file_name, get_files
+
 
 @click.command()
-@click.argument('input_files', nargs=-1, type=click.Path(exists=True))
-@click.argument('output_dir', nargs=1, type=click.Path())
+@click.argument('in_dir', type=click.Path(exists=True))
+@click.option('--out_dir', '-o', default=os.getcwd(), type=click.Path())
 @click.option('--mode', default='word')
-def command(input_files, output_dir, mode):
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+def saf_to_text(in_dir, out_dir, mode):
+    create_dirs(out_dir)
 
     if mode not in ('word', 'lemma'):
         raise ValueError("Unknown mode: {mode}, "
                          "please choose either word or lemma"
                          .format(**locals()))
 
-    for fi in input_files:
+    in_files = get_files(in_dir)
+
+    for fi in in_files:
         with codecs.open(fi, encoding='utf-8') as f:
             saf = json.load(f)
 
@@ -36,14 +39,11 @@ def command(input_files, output_dir, mode):
 
             sentence.append(t[mode])
 
-        head, tail = os.path.split(fi)
-        fname = tail.replace(os.path.splitext(tail)[1], '')
-
-        out_file = os.path.join(output_dir, '{}.txt'.format(fname))
+        out_file = out_file_name(out_dir, os.path.basename(fi), ext='txt')
         with codecs.open(out_file, 'wb', encoding='utf-8') as f:
             f.write(u'\n'.join(lines))
             f.write(u'\n')
 
 
 if __name__ == '__main__':
-    command()
+    saf_to_text()

@@ -5,7 +5,7 @@ import codecs
 import json
 import datetime
 
-from nlppln.utils import create_dirs, out_file_name
+from nlppln.utils import create_dirs, out_file_name, get_files
 
 
 _POSMAP = {"VZ": "P",
@@ -73,12 +73,14 @@ def frog_to_saf(tokens):
 
 
 @click.command()
-@click.argument('input_files', nargs=-1, type=click.Path(exists=True))
-@click.argument('output_dir', nargs=1, type=click.Path())
-def frog2saf(input_files, output_dir):
-    create_dirs(output_dir)
+@click.argument('in_dir', type=click.Path(exists=True))
+@click.option('--out_dir', '-o', default=os.getcwd(), type=click.Path())
+def frog2saf(in_dir, out_dir):
+    create_dirs(out_dir)
 
-    for fi in input_files:
+    in_files = get_files(in_dir)
+
+    for fi in in_files:
         with codecs.open(fi, encoding='utf-8') as f:
             lines = f.readlines()
             lines = [line.strip() for line in lines]
@@ -87,8 +89,7 @@ def frog2saf(input_files, output_dir):
         head, tail = os.path.split(fi)
         fname = tail.replace(os.path.splitext(tail)[1], '')
 
-        out_file = os.path.join(output_dir, out_file_name(output_dir, fname,
-                                                          'json'))
+        out_file = os.path.join(out_dir, out_file_name(out_dir, fname, 'json'))
         with codecs.open(out_file, 'wb', encoding='utf-8') as f:
             json.dump(saf_data, f, indent=4)
 

@@ -5,18 +5,21 @@ import codecs
 import json
 import pandas as pd
 
+from nlppln.utils import create_dirs, get_files
+
 
 @click.command()
-@click.argument('input_files', nargs=-1, type=click.Path(exists=True))
-@click.argument('output_file', nargs=1, type=click.Path())
-def nerstats(input_files, output_file):
-    output_dir = os.path.dirname(output_file)
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+@click.argument('in_dir', type=click.Path(exists=True))
+@click.option('--out_dir', '-o', default=os.getcwd(), type=click.Path())
+@click.option('--name', '-n', default='ner_stats.csv')
+def nerstats(in_dir, out_dir, name):
+    create_dirs(out_dir)
 
     frames = []
 
-    for fi in input_files:
+    in_files = get_files(in_dir)
+
+    for fi in in_files:
         with codecs.open(fi, encoding='utf-8') as f:
             saf = json.load(f)
         data = {}
@@ -29,7 +32,7 @@ def nerstats(input_files, output_file):
         frames.append(pd.DataFrame(data=data))
 
     df = pd.concat(frames, ignore_index=True)
-    df.to_csv(output_file, encoding='utf-8')
+    df.to_csv(os.path.join(out_dir, name), encoding='utf-8')
 
 
 if __name__ == '__main__':

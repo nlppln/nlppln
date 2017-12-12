@@ -6,13 +6,17 @@ baseCommand: ["python", "-m", "nlppln.commands.apachetika"]
 doc: |
   Convert Word documents to text using `Apache Tika <https://tika.apache.org/>`_.
 
+requirements:
+  InitialWorkDirRequirement:
+    listing: $(inputs.in_files)
+
+arguments:
+  - valueFrom: $(runtime.outdir)
+    position: 1
+
 inputs:
   in_files:
-    type:
-      type: array
-      items: File
-    inputBinding:
-      position: 2
+    type: File[]
   tika_server:
     type: string?
     inputBinding:

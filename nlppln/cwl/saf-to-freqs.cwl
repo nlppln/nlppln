@@ -3,9 +3,13 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.freqs"]
 
+requirements:
+  InitialWorkDirRequirement:
+    listing: $(inputs.in_files)
+
 arguments:
-  - valueFrom: $(runtime.outdir)/freqs.csv
-    position: 2
+  - valueFrom: $(runtime.outdir)
+    position: 1
 
 doc: |
   Return csv file wit a ranked list of (word, pos) pairs.
@@ -13,20 +17,22 @@ doc: |
   The list can be of (word, pos) pairs of (lemma, pos) pairs.
 
 inputs:
-- id: in_files
-  type:
-    type: array
-    items: File
-  inputBinding:
-    position: 1
-- id: mode
-  type: string?
-  inputBinding:
-    prefix: --mode
-    separate: true
+  in_files:
+    type: File[]
+  name:
+    type: string?
+    default: freqs.csv
+    inputBinding:
+      prefix: --name=
+      separate: false
+  mode:
+    type: string?
+    inputBinding:
+      prefix: --mode
+      separate: true
 
 outputs:
-  - id: freqs
+  freqs:
     type: File
     outputBinding:
-      glob: "freqs.csv"
+      glob: "*.csv"

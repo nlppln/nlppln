@@ -6,18 +6,20 @@ import os
 import pyjq
 import pandas as pd
 
-from nlppln.utils import create_dirs
+from nlppln.utils import create_dirs, get_files
 
 
 @click.command()
-@click.argument('in_files', nargs=-1, type=click.Path(exists=True))
-@click.argument('meta_out', nargs=1, type=click.Path())
-def command(in_files, meta_out):
+@click.argument('in_dir', type=click.Path(exists=True))
+@click.argument('meta_out', type=click.Path())
+def basic_text_statistics(in_dir, meta_out):
     create_dirs(meta_out)
 
     d = {'num_words': [], 'num_sentences': []}
 
     text_names = []
+
+    in_files = get_files(in_dir)
 
     for fi in in_files:
         with codecs.open(fi, encoding='utf-8') as f:
@@ -34,4 +36,4 @@ def command(in_files, meta_out):
 
 
 if __name__ == '__main__':
-    command()
+    basic_text_statistics()

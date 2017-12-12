@@ -1,21 +1,28 @@
 #!/usr/bin/env python
+import os
 import click
 import codecs
-import os
 import pandas as pd
 import json
 from collections import Counter
 
+from nlppln.utils import create_dirs, out_file_name, get_files
+
 
 @click.command()
-@click.argument('in_files', nargs=-1, type=click.Path(exists=True))
-@click.argument('output_file', type=click.Path())
+@click.argument('in_dir', type=click.Path(exists=True))
+@click.option('--out_dir', '-o', default=os.getcwd(), type=click.Path())
+@click.option('--name', '-n', default='freqs.csv')
 @click.option('--mode', default='word')
-def freqs(in_files, output_file, mode):
+def freqs(in_dir, out_dir, name, mode):
     if mode not in ('word', 'lemma'):
         raise ValueError("Unknown mode: {mode}, "
                          "please choose either word or lemma"
                          .format(**locals()))
+    output_file = out_file_name(out_dir, name)
+    create_dirs(output_file)
+
+    in_files = get_files(in_dir)
 
     cnt = Counter()
     for fi in in_files:

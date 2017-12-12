@@ -6,13 +6,17 @@ baseCommand: ["python", "-m", "nlppln.commands.basic_text_statistics"]
 doc: |
   Output a csv file with basic text statistics (#tokens, #sentences).
 
+requirements:
+  InitialWorkDirRequirement:
+    listing: $(inputs.in_files)
+
+arguments:
+  - valueFrom: $(runtime.outdir)
+    position: 1
+
 inputs:
   in_files:
-    type:
-      type: array
-      items: File
-    inputBinding:
-      position: 2
+    type: File[]
   out_file:
     type: string
     inputBinding:

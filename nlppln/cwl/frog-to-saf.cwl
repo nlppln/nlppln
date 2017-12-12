@@ -2,25 +2,25 @@
 cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.frog_to_saf"]
+
+requirements:
+  InitialWorkDirRequirement:
+    listing: $(inputs.in_files)
+
 arguments:
   - valueFrom: $(runtime.outdir)
-    position: 2
+    position: 1
 
 doc: |
   Convert `frog <https://languagemachines.github.io/frog/>`_ csv output to
   `saf <https://github.com/vanatteveldt/saf>`_.
 
 inputs:
-  - id: in_files
-    type:
-      type: array
-      items: File
-    inputBinding:
-      position: 1
+  in_files:
+    type: File[]
+
 outputs:
-  - id: saf
-    type:
-      type: array
-      items: File
+  saf:
+    type: File[]
     outputBinding:
       glob: "*.json"

@@ -2,24 +2,23 @@
 cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.saf_to_txt"]
+
+requirements:
+  InitialWorkDirRequirement:
+    listing: $(inputs.in_files)
+
 arguments:
   - valueFrom: $(runtime.outdir)
-    position: 2
+    position: 1
 
 doc: |
   Convert `saf <https://github.com/vanatteveldt/saf>`_ to space separated tokens.
 
 inputs:
-- id: in_files
-  type:
-    type: array
-    items: File
-  inputBinding:
-    position: 1
+  in_files:
+    type: File[]
 outputs:
-- id: out_files
-  type:
-    type: array
-    items: File
-  outputBinding:
-    glob: "*.txt"
+  out_files:
+    type: File[]
+    outputBinding:
+      glob: "*.txt"
