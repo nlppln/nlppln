@@ -37,7 +37,6 @@ def normalize_whitespace_punctuation(txt, out_dir):
     text = normalize_punctuation(text)
 
     out_file = out_file_name(out_dir, os.path.basename(txt.name))
-    print out_file
     with codecs.open(out_file, 'wb', encoding='utf-8') as f:
         f.write(text)
 
