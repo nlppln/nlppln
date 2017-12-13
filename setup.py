@@ -71,7 +71,7 @@ setup(
         'scriptcwl<=0.6.0',
         'lxml',
         'beautifulsoup4',
-        'pyjq',
+        'pyjq<=2.1.0',
         'sklearn',
         'tika'],
     setup_requires=[
