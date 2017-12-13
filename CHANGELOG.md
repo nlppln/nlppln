@@ -6,9 +6,9 @@
 
 - CWL files for NLP functionality (so they don't have to be downloaded separately)
 - Dockerfile to run nlppln on Windows
-- Tests
+- First tests
 - Python 3 support
-- Save workflows with inline steps (default), or relative paths
+- By default, save workflows using working directory
 - Documentation on [Read the Docs](http://nlppln.readthedocs.io/en/latest/)
 - Command to copy and rename files (`copy-and-rename-files.cwl`)
 - Command to generate data for TextDNA visualization (`textDNA-generate.cwl`)
@@ -21,7 +21,6 @@
 - Command to list al files in a directory (`ls.cwl`)
 - Command to lowercase a text (`lowercase.cwl`)
 - Command to clear xml elements (`clear-xml-elements.cwl`)
-- Command to tokenize with [pattern.nl](https://www.clips.uantwerpen.be/pattern) (`pattern-nl.cwl`)
 
 ### Changed
 
