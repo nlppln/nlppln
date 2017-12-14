@@ -40,8 +40,7 @@ class Mock(MagicMock):
     def __getattr__(cls, name):
         return MagicMock()
 
-MOCK_MODULES = ['numpy', 'scipy', 'pandas', 'lxml', 'beautifulsoup4',
-                'sklearn', 'pyjq', 'tika']
+MOCK_MODULES = ['pyjq']
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
 # -- General configuration ------------------------------------------------
