@@ -1,7 +1,7 @@
 NLP Pipeline
 ============
 
-|codacy_grade| |travis| |documentation| |pypi_version| |pypi_supported|
+|codacy_grade| |travis| |documentation| |pypi_version| |pypi_supported| |zenodo|
 
 nlppln is a python package for creating NLP pipelines using `Common Workflow Language <http://www.commonwl.org/>`_ (CWL).
 It provides steps for (generic) NLP functionality, such as tokenization,
@@ -73,3 +73,7 @@ Please check the `installation guidelines <http://nlppln.readthedocs.io/en/lates
 .. |pypi_supported| image:: https://img.shields.io/pypi/pyversions/nlppln.svg
                       :target: https://pypi.python.org/pypi/nlppln
                       :alt: PyPI
+
+.. |zenodo| image:: https://zenodo.org/badge/65198876.svg
+              :target: https://zenodo.org/badge/latestdoi/65198876
+              :alt: DOI
