@@ -71,7 +71,6 @@ setup(
         'scriptcwl<=0.7.0',
         'lxml',
         'beautifulsoup4',
-        'pyjq<=2.1.0',
         'sklearn',
         'tika',
         'mock'],
