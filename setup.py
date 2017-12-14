@@ -73,6 +73,7 @@ setup(
         'beautifulsoup4',
         'sklearn',
         'tika',
+        # pyjq is in requirements.txt, because Read the Docs can't install it
         'mock;python_version<"3.3"'],
     setup_requires=[
         # dependency for `python setup.py test`
