@@ -1,8 +1,12 @@
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 # To use a consistent encoding
-from codecs import open
 from os import path
+
+
+def read(fname):
+    """Define read function to read README in long description."""
+    return open(path.join(path.dirname(__file__), fname)).read()
 
 here = path.abspath(path.dirname(__file__))
 
@@ -15,8 +19,7 @@ setup(
     version='0.1.0',
 
     description='NLP pipeline software using common workflow language',
-    long_description="""NLP pipeline software using common workflow language
-""",
+    long_description=read('README.rst'),
 
     # The project's main homepage.
     url='https://github.com/nlppln/nlppln',
@@ -88,5 +91,4 @@ setup(
         'pycodestyle',
     ]
 
-    #scripts=['recipy-cmd']
 )
