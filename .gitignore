@@ -10,6 +10,7 @@ build
 *.xml
 
 !requirements.txt
+!rtd-requirements.txt
 
 dist
 .cache
