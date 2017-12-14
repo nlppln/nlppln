@@ -60,11 +60,11 @@ Please check the `installation guidelines <http://nlppln.readthedocs.io/en/lates
 
 .. |travis| image:: https://travis-ci.org/nlppln/nlppln.svg?branch=master
               :target: https://travis-ci.org/nlppln/nlppln
-              :Build Status:
+              :alt: Build Status
 
 .. |documentation| image:: https://readthedocs.org/projects/nlppln/badge/?version=latest
                      :target: http://nlppln.readthedocs.io/en/latest/?badge=latest
-                     :Documentation Status:
+                     :alt: Documentation Status
 
 .. |pypi_version| image:: https://badge.fury.io/py/nlppln.svg
                     :target: https://badge.fury.io/py/nlppln
