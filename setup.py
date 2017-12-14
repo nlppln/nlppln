@@ -19,7 +19,7 @@ setup(
 """,
 
     # The project's main homepage.
-    url='https://github.com/WhatWorksWhenForWhom/nlppln',
+    url='https://github.com/nlppln/nlppln',
 
     # Author details
     author='Janneke van der Zwaan',
