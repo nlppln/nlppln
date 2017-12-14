@@ -73,7 +73,7 @@ setup(
         'beautifulsoup4',
         'sklearn',
         'tika',
-        'mock'],
+        'mock;python_version<"3.3"'],
     setup_requires=[
         # dependency for `python setup.py test`
         'pytest-runner',
