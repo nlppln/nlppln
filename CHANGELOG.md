@@ -1,5 +1,12 @@
 # Change Log
 
+## Unreleased
+
+### Added
+
+- Command to extract tar.gz files (`tar.cwl`)
+- Command to create directories (`mkdir.cwl`)
+
 ## 0.3.0
 
 ### Added
