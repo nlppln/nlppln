@@ -14,10 +14,6 @@ arguments:
 doc: |
   Return a sorted list of word freqencies in the corpus.
 
-arguments:
-  - valueFrom: $(runtime.outdir)/freqs.csv
-    position: 2
-
 inputs:
   in_files:
     type: File[]

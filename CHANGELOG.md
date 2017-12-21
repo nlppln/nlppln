@@ -7,6 +7,10 @@
 - Command to extract tar.gz files (`tar.cwl`)
 - Command to create directories (`mkdir.cwl`)
 
+### Changed
+
+- Remove erroneous arguments section from `freqs.cwl`
+
 ## 0.3.0
 
 ### Added
