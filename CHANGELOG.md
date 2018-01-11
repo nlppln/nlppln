@@ -6,6 +6,7 @@
 
 - Command to extract tar.gz files (`tar.cwl`)
 - Command to create directories (`mkdir.cwl`)
+- Command to remove XML elements from XML files (`remove-xml-elements.cwl`)
 
 ### Changed
 
