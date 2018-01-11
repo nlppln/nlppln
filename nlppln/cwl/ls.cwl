@@ -5,7 +5,7 @@ baseCommand: ["python", "-m", "nlppln.commands.ls"]
 doc: |
   List files in a directory.
 
-  This command can be used to convert a ``Directory`` into a list of files.
+  This command can be used to convert a ``Directory`` into a list of files. This list can be filtered on file name by specifying ``--endswith``.
 
 inputs:
   in_dir:
@@ -16,6 +16,10 @@ inputs:
     type: boolean?
     inputBinding:
       prefix: --recursive
+  endswith:
+    type: string?
+    inputBinding:
+      prefix: --endswith
 
 stdout: cwl.output.json
 
