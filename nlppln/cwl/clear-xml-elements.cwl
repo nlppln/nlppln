@@ -4,7 +4,7 @@ class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.clear_xml_elements"]
 
 doc: |
-  Remove specified XML elements from XML file.
+  Empty (i.e. remove all content from) specified XML elements in the XML file.
 
 inputs:
   xml_file:
