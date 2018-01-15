@@ -7,6 +7,9 @@ class WorkflowGenerator(WFGenerator):
     def __init__(self, working_dir=None):
         WFGenerator.__init__(self, steps_dir=CWL_PATH, working_dir=working_dir)
 
+        self.load(step_file='https://raw.githubusercontent.com/nlppln/'
+                            'edlib-align/master/align.cwl')
+
     def save(self, fname, validate=True, wd=True, inline=False, relative=False,
              pack=False, encoding='utf-8'):
         """Save workflow to file
