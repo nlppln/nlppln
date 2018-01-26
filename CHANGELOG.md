@@ -9,6 +9,7 @@
 - Command to remove XML elements from XML files (`remove-xml-elements.cwl`)
 - Command to align strings using edlib (in separate repository)
 - Command to parse text using pattern (in separate repository)
+- Command to remove newlines from a text (`remove_newlines.cwl`)
 
 ### Changed
 
