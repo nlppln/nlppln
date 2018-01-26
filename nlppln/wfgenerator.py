@@ -9,6 +9,8 @@ class WorkflowGenerator(WFGenerator):
 
         self.load(step_file='https://raw.githubusercontent.com/nlppln/'
                             'edlib-align/master/align.cwl')
+        self.load(step_file='https://raw.githubusercontent.com/nlppln/'
+                            'pattern-docker/master/pattern.cwl')
 
     def save(self, fname, validate=True, wd=True, inline=False, relative=False,
              pack=False, encoding='utf-8'):
