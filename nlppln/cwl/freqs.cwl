@@ -14,6 +14,8 @@ arguments:
 doc: |
   Return a sorted list of word freqencies in the corpus.
 
+  The corpus should consist of files containing space-separated tokens.
+
 inputs:
   in_files:
     type: File[]

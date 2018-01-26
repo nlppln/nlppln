@@ -1,18 +1,12 @@
 #!/usr/bin/env python
 import os
 import click
-import codecs
 from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 import pandas as pd
 
 from nlppln.utils import create_dirs, get_files
-
-
-def make_corpus(doc_files):
-    for doc in doc_files:
-        with codecs.open(doc, encoding='utf-8') as f:
-            yield f.read()
+from nlppln.liwc_tokenized import split
 
 
 @click.command()
@@ -25,9 +19,8 @@ def freqs(in_dir, out_dir, name):
 
     in_files = get_files(in_dir)
 
-    vectorizer = CountVectorizer(min_df=1)
-    corpus = make_corpus(in_files)
-    X = vectorizer.fit_transform(corpus)
+    vectorizer = CountVectorizer(input='filename', tokenizer=split)
+    X = vectorizer.fit_transform(in_files)
     freqs = np.array(X.sum(axis=0)).squeeze()
     vocab_df = pd.DataFrame(
         {'word': vectorizer.get_feature_names(), 'freq': freqs})
