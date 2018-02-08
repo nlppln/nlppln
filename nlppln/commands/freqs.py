@@ -5,8 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 import pandas as pd
 
-from nlppln.utils import create_dirs, get_files
-from nlppln.liwc_tokenized import split
+from nlppln.utils import create_dirs, get_files, split
 
 
 @click.command()
