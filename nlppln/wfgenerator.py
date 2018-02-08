@@ -12,12 +12,11 @@ class WorkflowGenerator(WFGenerator):
         self.load(step_file='https://raw.githubusercontent.com/nlppln/'
                             'pattern-docker/master/pattern.cwl')
 
-    def save(self, fname, validate=True, wd=True, inline=False, relative=False,
+    def save(self, fname, validate=True, wd=False, inline=False, relative=True,
              pack=False, encoding='utf-8'):
         """Save workflow to file
 
-        For nlppln, the default is to use a working directory (and save steps
-        using the ``wd`` option).
+        For nlppln, the default is to save workflows with relative paths.
         """
         super(WorkflowGenerator, self).save(fname,
                                             validate=validate,
