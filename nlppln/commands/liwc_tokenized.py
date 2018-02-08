@@ -7,7 +7,7 @@ import numpy as np
 
 from sklearn.feature_extraction.text import CountVectorizer
 
-from ..utils import create_dirs, get_files
+from ..utils import create_dirs, get_files, split
 
 
 def load_liwc_dict(dict_file, encoding):
@@ -32,10 +32,6 @@ def load_liwc_dict(dict_file, encoding):
             categories = entry[1:]
             liwc_dict[term] = categories
     return liwc_dict, liwc_categories
-
-
-def split(s):
-    return s.split()
 
 
 @click.command()

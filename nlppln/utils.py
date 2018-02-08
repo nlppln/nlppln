@@ -86,5 +86,10 @@ def get_files(directory):
     # order alphabetically on file name
     return sorted(files_out)
 
+
+def split(s):
+    return s.split()
+
+
 if __name__ == '__main__':
     copy_cwl_files()
