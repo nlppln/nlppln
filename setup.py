@@ -75,9 +75,7 @@ setup(
         'lxml',
         'beautifulsoup4',
         'sklearn',
-        'tika',
-        # pyjq is in requirements.txt, because Read the Docs can't install it
-        'mock;python_version<"3.3"'],
+        'tika'],
     setup_requires=[
         # dependency for `python setup.py test`
         'pytest-runner',

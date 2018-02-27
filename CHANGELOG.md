@@ -16,6 +16,10 @@
 - Remove erroneous arguments section from `freqs.cwl`
 - Add option to filter on filename to `ls.cwl`
 
+### Removed
+
+- Dependency on `pyjq`.
+
 ## 0.3.0
 
 ### Added
