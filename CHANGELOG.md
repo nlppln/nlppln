@@ -4,7 +4,8 @@
 
 ### Added
 
-- Command to merge files in a list of directories into a single directory (`merge-dirs.cwl`) 
+- Command to return a directory containing all the files from a list of directories (`flatten-dirs.cwl`)
+- Command to return a directories containing as subdirectories the list of input directories (`gather-dirs.cwl`)
 
 ## 0.3.1
 
