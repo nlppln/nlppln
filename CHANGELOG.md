@@ -1,5 +1,11 @@
 # Change Log
 
+## Unreleased
+
+### Added
+
+- Command to merge files in a list of directories into a single directory (`merge-dirs.cwl`) 
+
 ## 0.3.1
 
 ### Added
