@@ -11,6 +11,12 @@ doc: |
   run with the ``--relax-path-checks`` option, because it accepts file names
   with spaces, which CWL normally does not accept.
 
+requirements:
+  EnvVarRequirement:
+    envDef:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      
 inputs:
   in_file:
     type: File

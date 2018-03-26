@@ -11,6 +11,12 @@ doc: |
 
   Named entities can be replaced with their type or deleted.
 
+requirements:
+  EnvVarRequirement:
+    envDef:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      
 inputs:
 - id: metadata
   type: File

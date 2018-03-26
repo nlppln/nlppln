@@ -9,6 +9,12 @@ doc: |
   Replace multiple subsequent occurrences of whitespace characters and
   punctuation with a single occurrence.
 
+requirements:
+  EnvVarRequirement:
+    envDef:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      
 inputs:
   meta_in:
     type: File

@@ -7,6 +7,12 @@ doc: |
 
   This command can be used to convert a ``Directory`` into a list of files. This list can be filtered on file name by specifying ``--endswith``.
 
+requirements:
+  EnvVarRequirement:
+    envDef:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+
 inputs:
   in_dir:
     type: Directory
