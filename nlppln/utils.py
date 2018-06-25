@@ -17,10 +17,14 @@ def remove_ext(fname):
     return os.path.splitext(bn)[0]
 
 
-def create_dirs(fname):
+def create_dirs(fname, is_file=False):
     """Create (output) directories if they don't exist
+
+    Removes the file name part if is_file is set to True.
     """
-    fname = os.path.dirname(os.path.abspath(fname))
+    fname = os.path.abspath(fname)
+    if is_file:
+        fname = os.path.dirname(fname)
 
     if not os.path.exists(fname):
         os.makedirs(fname)

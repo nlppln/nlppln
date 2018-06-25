@@ -87,6 +87,7 @@ setup(
         'pytest',
         'pytest-cov',
         'pycodestyle',
+        'pyfakefs',
     ]
 
 )
