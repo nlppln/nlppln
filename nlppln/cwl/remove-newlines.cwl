@@ -6,6 +6,12 @@ baseCommand: ["python", "-m", "nlppln.commands.remove_newlines"]
 doc: |
   Remove newlines from a text.
 
+requirements:
+  EnvVarRequirement:
+    envDef:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      
 inputs:
   in_file:
     type: File

@@ -6,6 +6,12 @@ baseCommand: ["python", "-m", "nlppln.commands.remove_xml_elements"]
 doc: |
   Remove specified XML elements from XML file.
 
+requirements:
+  EnvVarRequirement:
+    envDef:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      
 inputs:
   xml_file:
     type: File

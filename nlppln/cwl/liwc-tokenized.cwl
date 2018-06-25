@@ -8,6 +8,12 @@ doc: |
 
   The text files have to contain space separated tokens.
 
+requirements:
+  EnvVarRequirement:
+    envDef:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      
 inputs:
   in_dir:
     type: Directory

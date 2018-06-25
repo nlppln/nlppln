@@ -9,6 +9,12 @@ hints:
   - class: DockerRequirement
     dockerPull: nlppln/textdna-create-datasets
 
+requirements:
+  EnvVarRequirement:
+    envDef:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      
 doc: |
   Generate data to vizualize using `TextDNA <http://graphics.cs.wisc.edu/Vis/SequenceSurveyor/TextDNA.html>`_.
 
