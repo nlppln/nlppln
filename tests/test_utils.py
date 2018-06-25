@@ -1,6 +1,7 @@
 import os
 
-from nlppln.utils import remove_ext, out_file_name, create_dirs
+from nlppln.utils import remove_ext, out_file_name, create_dirs, cwl_file, \
+                         get_files, split
 
 
 def test_remove_ext_full_path():
@@ -52,3 +53,26 @@ def test_create_dirs_with_dir_name(fs):
     # Uses pyfakefs http://pyfakefs.org
     create_dirs('/test/test/')
     assert os.path.exists('/test/test/')
+
+
+def test_cwl_file():
+    f = {'class': 'File', 'path': '/path/test.txt'}
+    assert cwl_file('/path/test.txt') == f
+
+
+def test_get_files(fs):
+    # Uses pyfakefs http://pyfakefs.org
+    fs.create_file('/data/a.txt')
+    fs.create_file('/data/c.txt')
+    fs.create_file('/data/b.txt')
+
+    result = get_files('/data')
+
+    assert result == ['/data/a.txt', '/data/b.txt', '/data/c.txt']
+
+
+def test_split():
+    string = 'test test test'
+    result = string.split()
+
+    assert split(string) == result
