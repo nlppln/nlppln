@@ -16,7 +16,7 @@ arguments:
     position: 1
 
 doc: |
-  Return a sorted list of word freqencies in the corpus.
+  Return a sorted list of word frequencies in the corpus.
 
   The corpus should consist of files containing space-separated tokens.
 

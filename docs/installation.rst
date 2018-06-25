@@ -27,7 +27,6 @@ For development:
 
   git clone git@github.com:nlppln/nlppln.git
   cd nlppln
-  git checkout develop
   pip install -r requirements.txt
   python setup.py develop
 
@@ -35,4 +34,4 @@ Run tests (including coverage) with:
 
 .. code-block:: sh
 
-  python setup.py develop test
+  python setup.py test
