@@ -88,6 +88,10 @@ setup(
         'pytest-cov',
         'pycodestyle',
         'pyfakefs',
-    ]
-
+    ],
+    entry_points={
+        'console_scripts': [
+            'nlppln_copy_cwl=nlppln.copycwl:main',
+        ]
+    }
 )
