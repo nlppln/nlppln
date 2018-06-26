@@ -19,7 +19,7 @@ Pipelines or workflows can be created by writing a Python script:
 
 		wf.save('anonymize.cwl')
 
-This workflow finds named entities in all Dutch text files in a directory. Named 
+This workflow finds named entities in all Dutch text files in a directory. Named
 entities are replaced with their type (PER, LOC, ORG). The output consists of
 text files and a csv file that contains the named entities that have been replaced.
 
@@ -173,3 +173,45 @@ To load all CWL files in a directory, do:
 ::
 
 	wf.load(steps_dir='/path/to/dir/with/cwl/steps/')
+
+
+Using a working directory
+#########################
+
+Once you need more functionality than nlppln provides, and start creating your
+own processing steps, we recommend using a CWL working directory.
+A CWL working directory is a directory containing all available CWL specifications.
+To specify a working directory, do:
+::
+
+	from nlppln import WorkflowGenerator
+
+  with WorkflowGenerator(working_dir='path/to/working_dir') as wf:
+    wf.load(steps_dir='some/path/')
+    wf.load(steps_dir='some/other/path/')
+
+    # add inputs, steps and outputs
+
+If you use a working directory when creating pipelines, nlppln copies all CWL files
+to the working directory.
+
+To copy these files manually, you can also use the ``nlppln_copy_cwl`` command on the
+command line:
+::
+
+  nlppln_copy_cwl /path/to/cwl/working/dir
+
+To copy CWL files from a different directory than the one containing the nlppln
+CWL files, do:
+::
+
+  nlppln_copy_cwl --from_dir /path/to/your/dir/with/cwl/files /path/to/cwl/working/dir
+
+
+If you use a working directory, please save your workflow using the ``wd=True`` option:
+::
+
+  wf.save('workflow.cwl', wd=True)
+
+The workflow is saved in the working directory and then copied to you specified location.
+Subsequently, the workflow should be run from the working directory.
