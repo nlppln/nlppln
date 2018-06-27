@@ -50,13 +50,18 @@ def cwl_file(fname):
     return {'class': 'File', 'path': fname}
 
 
-def get_files(directory):
+def get_files(directory, recursive=False):
     """Return a list of all files in the directory."""
     files_out = []
-    for f in os.listdir(directory):
-        fi = os.path.join(directory, f)
-        if os.path.isfile(fi):
-            files_out.append(fi)
+    if recursive:
+        for root, dirs, files in os.walk(os.path.abspath(directory)):
+            for f in files:
+                files_out.append(os.path.join(root, f))
+    else:
+        for f in os.listdir(directory):
+            fi = os.path.join(directory, f)
+            if os.path.isfile(fi):
+                files_out.append(fi)
 
     # order alphabetically on file name
     return sorted(files_out)
