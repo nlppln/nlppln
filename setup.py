@@ -75,7 +75,8 @@ setup(
         'lxml',
         'beautifulsoup4',
         'sklearn',
-        'tika'],
+        'tika',
+        'patool'],
     setup_requires=[
         # dependency for `python setup.py test`
         'pytest-runner',
