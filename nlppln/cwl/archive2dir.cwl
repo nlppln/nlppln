@@ -6,7 +6,7 @@ baseCommand: ["python", "-m", "nlppln.commands.archive2dir"]
 doc: |
   Extract archive and recursively put all files in the output directory.
 
-  Uses `Patool <http://wummel.github.io/patool/>_` for extracting archives.
+  Uses `Patool <http://wummel.github.io/patool/>`_ for extracting archives.
 
 requirements:
   EnvVarRequirement:
