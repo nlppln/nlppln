@@ -24,6 +24,7 @@ import ruamel.yaml as yaml
 
 from recommonmark.parser import CommonMarkParser
 from nlppln import WorkflowGenerator
+from scriptcwl.scriptcwl import is_url
 
 try:
     from unittest.mock import MagicMock
@@ -132,15 +133,19 @@ def generate_cwl_documentation(_):
         f.write('Tools\n=====\n')
         f.write('\n``nlppln`` contains the following tools:\n')
         for cwl in cwl_files:
-            tool_name = os.path.basename(cwl)
-            plusses = '+'*len(tool_name)
-            with codecs.open(cwl) as c:
-                try:
-                    cwl_yaml = yaml.load(c, Loader=yaml.RoundTripLoader)
-                    doc = cwl_yaml.get('doc', 'No documentation')
-                    f.write(tool_template.format(tool_name, plusses, doc))
-                except yaml.YAMLError:
-                    pass
+            if is_url(cwl):
+                pass
+                # TODO: get documentation from urls
+            else:
+                tool_name = os.path.basename(cwl)
+                plusses = '+'*len(tool_name)
+                with codecs.open(cwl) as c:
+                    try:
+                        cwl_yaml = yaml.load(c, Loader=yaml.RoundTripLoader)
+                        doc = cwl_yaml.get('doc', 'No documentation')
+                        f.write(tool_template.format(tool_name, plusses, doc))
+                    except yaml.YAMLError:
+                        pass
 
 
 def setup(app):
