@@ -33,5 +33,6 @@ def merge_csv(in_dir, out_dir, name):
                 for line in data:
                     fo.write(line)
 
+
 if __name__ == '__main__':
     merge_csv()
