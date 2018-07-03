@@ -17,6 +17,10 @@ inputs:
     type: File
     inputBinding:
       position: 1
+  replacement:
+    type: string?
+    inputBinding:
+      prefix: --replacement
 
 stdout: $(inputs.in_file.nameroot).txt
 
