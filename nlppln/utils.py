@@ -1,5 +1,6 @@
 """NLP pipeline utility functionality"""
 import os
+import itertools
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 CWL_PATH = os.path.abspath(os.path.join(MODULE_PATH, 'cwl'))
@@ -55,13 +56,11 @@ def get_files(directory, recursive=False):
     files_out = []
     if recursive:
         for root, dirs, files in os.walk(os.path.abspath(directory)):
-            for f in files:
-                files_out.append(os.path.join(root, f))
+            files_out.append(files)
+        files_out = list(itertools.chain(*files_out))
     else:
-        for f in os.listdir(directory):
-            fi = os.path.join(directory, f)
-            if os.path.isfile(fi):
-                files_out.append(fi)
+        files_out = [os.path.join(directory, f) for f in os.listdir(directory)]
+        files_out = list(filter(lambda f: os.path.isfile(f), files_out))
 
     # order alphabetically on file name
     return sorted(files_out)
