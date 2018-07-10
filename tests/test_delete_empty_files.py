@@ -18,9 +18,6 @@ def test_delete_empty_files_different_in_and_out_directories():
             f.write('not empty\n')
         result = runner.invoke(delete_empty_files, ['in', '--out_dir', 'out'])
 
-        print os.getcwd()
-        print result.output
-
         assert result.exit_code == 0
 
         assert not os.path.exists('out/empty1.txt')
@@ -40,9 +37,6 @@ def test_delete_empty_files_equal_in_and_out_directories():
         with open('in/not_empty.txt', 'w') as f:
             f.write('not empty\n')
         result = runner.invoke(delete_empty_files, ['in', '--out_dir', 'in'])
-
-        print os.getcwd()
-        print result.output
 
         assert result.exit_code == 0
 

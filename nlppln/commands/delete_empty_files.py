@@ -24,7 +24,7 @@ def delete_empty_files(in_dir, out_dir):
             except shutil.Error:
                 pass
         else:
-            print 'deleting', os.path.basename(fi)
+            print('deleting {}'.format(os.path.basename(fi)))
             if os.path.abspath(in_dir) == os.path.abspath(out_dir):
                 os.remove(fi)
 
