@@ -1,7 +1,9 @@
 import os
 
+from bs4 import BeautifulSoup
+
 from nlppln.utils import remove_ext, out_file_name, create_dirs, cwl_file, \
-                         get_files, split
+                         get_files, split, read_xml, write_xml
 
 
 def test_remove_ext_full_path():
@@ -76,3 +78,20 @@ def test_split():
     result = string.split()
 
     assert split(string) == result
+
+
+def test_read_and_write_xml(fs):
+    # Uses pyfakefs http://pyfakefs.org
+    fs.create_file('/test.xml')
+    document = BeautifulSoup('<document></document>', 'xml')
+    for i in range(3):
+        el = document.new_tag('element', id=i)
+        document.document.append(el)
+
+    write_xml(document, '/document.xml')
+
+    assert os.path.exists('/document.xml')
+
+    xml = read_xml('/document.xml')
+
+    assert len(xml.find_all('element')) == 3
