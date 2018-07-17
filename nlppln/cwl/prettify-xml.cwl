@@ -11,7 +11,7 @@ doc: |
 inputs:
   in_file:
     type: File
-		inputBinding:
+    inputBinding:
       position: 2
 
 outputs:
