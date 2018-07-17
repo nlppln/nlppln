@@ -1,6 +1,11 @@
 """NLP pipeline utility functionality"""
 import os
 import itertools
+import codecs
+import six
+
+from bs4 import BeautifulSoup
+
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 CWL_PATH = os.path.abspath(os.path.join(MODULE_PATH, 'cwl'))
@@ -68,3 +73,19 @@ def get_files(directory, recursive=False):
 
 def split(s):
     return s.split()
+
+
+def read_xml(fname):
+    with codecs.open(fname, encoding='utf-8') as f:
+        xml = f.read()
+    return BeautifulSoup(xml, 'xml')
+
+
+def write_xml(soup, fname):
+    with codecs.open(fname, 'wb', encoding='utf-8') as f:
+        if six.PY2:
+            # six.u doesn't work in Python 2 with non-ascii text
+            # See https://pythonhosted.org/six/#six.u
+            f.write(unicode(soup))
+        else:
+            f.write(str(soup))
