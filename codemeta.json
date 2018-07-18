@@ -1,0 +1,31 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "http://schema.org"
+    ],
+    "@type": "SoftwareSourceCode",
+    "author": [
+        {
+            "@id": "https://orcid.org/0000-0002-8329-7000",
+            "@type": "Person",
+            "affiliation": {
+                "@type": "Organization",
+                "legalName": "Netherlands eScience Center"
+            },
+            "familyName": "van der Zwaan",
+            "givenName": "Janneke M."
+        },
+        {
+            "@type": "Person",
+            "affiliation": {
+                "@type": "Organization",
+                "legalName": "Netherlands eScience Center"
+            },
+            "familyName": "van Kuppevelt",
+            "givenName": "Dafne"
+        }
+    ],
+    "codeRepository": "https://github.com/nlppln/nlppln",
+    "license": "http://www.apache.org/licenses/LICENSE-2.0",
+    "name": "NLP Pipeline (nlppln) 0.3.1"
+}

@@ -1,0 +1,17 @@
+{
+    "creators": [
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "van der Zwaan, Janneke M.",
+            "orcid": "https://orcid.org/0000-0002-8329-7000"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "van Kuppevelt, Dafne"
+        }
+    ],
+    "license": {
+        "id": "Apache-2.0"
+    },
+    "title": "NLP Pipeline (nlppln) 0.3.1"
+}
