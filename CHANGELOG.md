@@ -4,8 +4,14 @@
 
 ### Added
 
+- Command to ls a chunk of files (`ls_chunk.cwl`) This can be used to run workflows for a number of files in a directory (e.g., if running it for all files takes too long)
+- Command to create a chunked file list (`create_chunked_list.cwl`)
 - Command to return a directory containing all the files from a list of directories (`flatten-dirs.cwl`)
 - Command to return a directory containing as subdirectories the list of input directories (`gather-dirs.cwl`)
+
+### Changed
+
+- Expression tool `save-files-to-dir.cwl` extracts the name of the directory to save to from the input files if the `dir_name` is omitted
 
 ## 0.3.1
 
