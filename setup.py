@@ -74,9 +74,7 @@ setup(
         'scriptcwl>=0.7.1',
         'lxml',
         'beautifulsoup4',
-        'sklearn',
-        'tika',
-        'patool'],
+        'sklearn'],
     setup_requires=[
         # dependency for `python setup.py test`
         'pytest-runner',
