@@ -9,7 +9,7 @@ from nlppln.utils import cwl_file
 @click.command()
 @click.argument('in_dir', type=click.Path(exists=True))
 @click.argument('chunks', type=click.File(encoding='utf-8'))
-@click.option('--name', '-n')
+@click.argument('name')
 def ls_chunk(in_dir, chunks, name):
     div = json.load(chunks)
     files = div.get(name, [])
