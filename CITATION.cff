@@ -2,8 +2,8 @@
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
 message: If you use this software, please cite it as below.
-title: 'NLP Pipeline (nlppln) 0.3.1'
-doi: 10.5281/zenodo.1185197
+title: 'NLP Pipeline (nlppln)'
+doi: 10.5281/zenodo.1402677
 authors:
 - given-names: "Janneke M."
   family-names: Zwaan
@@ -14,7 +14,7 @@ authors:
   family-names: Kuppevelt
   name-particle: van
   affiliation: Netherlands eScience Center
-version: 0.3.1
-date-released: 2018-02-27
+version: 0.3.2
+date-released: 2018-08-23
 repository-code: https://github.com/nlppln/nlppln
 license: Apache-2.0
