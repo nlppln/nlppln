@@ -215,3 +215,63 @@ If you use a working directory, please save your workflow using the ``wd=True`` 
 
 The workflow is saved in the working directory and then copied to you specified location.
 Subsequently, the workflow should be run from the working directory.
+
+Tips and tricks
+###############
+
+Create workflows you can run for a single file
+----------------------------------------------
+
+If you want to create a workflow that should be applied to each (text) file in a directory,
+create a workflow that performs all the steps to a single file. Then, use this workflow
+as a subworkflow that is scattered over a list of input files:
+::
+
+  from nlppln import WorkflowGenerator
+
+  with WorkflowGenerator(working_dir='path/to/working_dir') as wf:
+    wf.load(steps_dir='some/path/')
+
+    in_dir = wf.add_input(in_dir='Directory')
+
+    in_files = wf.ls(in_dir=in_dir)
+    processed_files = wf.some_subworkflow(in_file=in_files, scatter='in_file', scatter_method='dotproduct' [, ...])
+
+    wf.add_outputs(out_files=processed_files)
+
+
+Having a workflow you can run for a single file makes it easier to test the workflow.
+
+Use ``create_chunked_list`` and ``ls_chunk`` to run a workflow for a subset of files
+------------------------------------------------------------------------------------
+
+Sometimes running a workflow for all files in a directory takes too long, and you'd like
+to run it for subsets of files. Using ``create_chunked_list``, you can create a JSON file
+containing a division of the files in a directory in chunks. You can then create a workflow
+that, instead of using ``ls`` to list all files in a directory, uses ``ls_chunk`` that
+runs the workflow for a single chunk of files.
+
+To create a division of the input files, do:
+::
+
+  python -m nlppln.commands.create_chunked_list [--size 500 --out_name output.json] /path/to/directory/with/input/files
+
+The result is a JSON file named ``output.json`` that contains numbered chunks
+containing 500 files each.
+
+To run a workflow for a chunk of files, instead of all files in a directory, do:
+::
+
+  from nlppln import WorkflowGenerator
+
+  with WorkflowGenerator(working_dir='path/to/working_dir') as wf:
+    wf.load(steps_dir='some/path/')
+
+    in_dir = wf.add_input(in_dir='Directory')
+    chunks = wf.add_input(chunks='File')
+    chunk_name = wf.add_input(name='string')
+
+    in_files = wf.ls_chunk(in_dir=in_dir, chunks=chunks, name=chunk_name)
+    processed_files = wf.some_subworkflow(in_file=in_files, scatter='in_file', scatter_method='dotproduct' [, ...])
+
+    wf.add_outputs(out_files=processed_files)
