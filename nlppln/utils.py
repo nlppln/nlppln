@@ -61,6 +61,7 @@ def get_files(directory, recursive=False):
     files_out = []
     if recursive:
         for root, dirs, files in os.walk(os.path.abspath(directory)):
+            files = [os.path.join(root, f) for f in files]
             files_out.append(files)
         files_out = list(itertools.chain(*files_out))
     else:

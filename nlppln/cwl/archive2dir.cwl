@@ -4,7 +4,10 @@ class: CommandLineTool
 baseCommand: ["python", "-m", "nlppln.commands.archive2dir"]
 
 doc: |
-  Extract archive and recursively put all files in the output directory.
+  Extract archive.
+
+  To recursively put all files in the output directory, use the
+  `--remove-dir-structure` option.
 
   Uses `Patool <http://wummel.github.io/patool/>`_ for extracting archives.
 
@@ -23,6 +26,10 @@ inputs:
     type: File
     inputBinding:
       position: 1
+  remove-dir-structure:
+    type: boolean?
+    inputBinding:
+      prefix: --remove-dir-structure
 
 outputs:
   out_dir:
