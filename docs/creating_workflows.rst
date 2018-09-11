@@ -242,6 +242,15 @@ as a subworkflow that is scattered over a list of input files:
 
 Having a workflow you can run for a single file makes it easier to test the workflow.
 
+Test your workflow by running it for the largest or otherwise most complex file
+-------------------------------------------------------------------------------
+
+By running your workflow for the largest or otherwise most complex file, you can
+identify problems, such as excessive memory usage, early and/or before running it
+for all files in your dataset. There may, of course, still be problems with other
+files, but starting analysis with the largest file is easy to do.
+
+
 Use ``create_chunked_list`` and ``ls_chunk`` to run a workflow for a subset of files
 ------------------------------------------------------------------------------------
 
