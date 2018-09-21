@@ -87,6 +87,7 @@ setup(
         'pytest-cov',
         'pycodestyle',
         'pyfakefs',
+        'sh',
     ],
     entry_points={
         'console_scripts': [
