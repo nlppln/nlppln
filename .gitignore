@@ -3,14 +3,7 @@
 *.eggs
 build
 
-# data
-*.txt
-*.out
-*.csv
-*.xml
-
-!requirements.txt
-!rtd-requirements.txt
+coverage.xml
 
 dist
 .cache
