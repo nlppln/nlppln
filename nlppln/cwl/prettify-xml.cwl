@@ -1,6 +1,13 @@
 #!/usr/bin/env cwl-runner
 cwlVersion: v1.0
 class: CommandLineTool
+
+requirements:
+  EnvVarRequirement:
+    envDef:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+
 baseCommand: ["python", "-m", "nlppln.commands.prettify_xml"]
 
 doc: |
