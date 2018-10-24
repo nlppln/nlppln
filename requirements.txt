@@ -3,3 +3,4 @@
 -e .
 tika
 patool
+yamlreader
