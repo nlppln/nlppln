@@ -23,7 +23,7 @@ To create a workflow, you have to write a Python script:
   from nlppln import WorkflowGenerator
 
   with WorkflowGenerator() as wf:
-    txt_dir = wf.add_inputs(txt_dir='Directory')
+    txt_dir = wf.add_input(txt_dir='Directory')
 
     frogout = wf.frog_dir(in_dir=txt_dir)
     saf = wf.frog_to_saf(in_files=frogout)

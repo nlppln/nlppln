@@ -7,7 +7,7 @@ Pipelines or workflows can be created by writing a Python script:
 	from nlppln import WorkflowGenerator
 
 	with WorkflowGenerator() as wf:
-		txt_dir = wf.add_inputs(txt_dir='Directory')
+		txt_dir = wf.add_input(txt_dir='Directory')
 
 		frogout = wf.frog_dir(dir_in=txt_dir)
 		saf = wf.frog_to_saf(in_files=frogout)
@@ -34,7 +34,7 @@ Setting workflow inputs
 Wokflow inputs can be added by calling ``add_input()``:
 ::
 
-	txt_dir = wf.add_inputs(txt_dir='Directory')
+	txt_dir = wf.add_input(txt_dir='Directory')
 
 The ``add_input()`` method expects a ``name=type`` pair as input parameter.
 The pair connects an input name (``txt_dir`` in the example) to a CWL type
