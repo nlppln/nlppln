@@ -71,7 +71,7 @@ setup(
     install_requires=[
         'scipy',
         'pandas',
-        'scriptcwl>=0.7.1',
+        'scriptcwl>=0.8.0',
         'lxml',
         'beautifulsoup4',
         'sklearn'],
