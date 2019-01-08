@@ -83,7 +83,7 @@ setup(
         'recommonmark'
     ],
     tests_require=[
-        'pytest',
+        'pytest>=3.6',
         'pytest-cov',
         'pycodestyle',
         'pyfakefs',
