@@ -14,7 +14,7 @@ authors:
   family-names: Kuppevelt
   name-particle: van
   affiliation: Netherlands eScience Center
-version: 0.3.2
-date-released: 2018-08-23
+version: 0.3.3
+date-released: 2019-01-08
 repository-code: https://github.com/nlppln/nlppln
 license: Apache-2.0
