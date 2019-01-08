@@ -1,5 +1,19 @@
 # Change Log
 
+## Unreleased
+
+### Added
+
+* Command to flatten a list of lists of files (`flatten-list.cwl`)
+* Command to merge yaml files using [yamlreader](https://github.com/ImmobilienScout24/yamlreader) (`merge-yaml.cwl`)
+
+### Changed
+
+* By default, keep directory structure of extracted archive (`archive2dir.cwl`)
+* Change input for `check-utf8.cwl` from single file to directory of files
+* Change input for `delete-empty-files.cwl` from directory to list of files 
+* Update method for saving workflows (requires scriptcwl >= 0.8.0)
+
 ## 0.3.2
 
 ### Added
