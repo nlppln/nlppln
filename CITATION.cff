@@ -3,7 +3,7 @@
 cff-version: 1.0.3
 message: If you use this software, please cite it as below.
 title: 'NLP Pipeline (nlppln)'
-doi: 10.5281/zenodo.1402677
+doi: 10.5281/zenodo.1116323
 authors:
 - given-names: "Janneke M."
   family-names: Zwaan
