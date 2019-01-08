@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## 0.3.3
 
 ### Added
 
@@ -11,7 +11,7 @@
 
 * By default, keep directory structure of extracted archive (`archive2dir.cwl`)
 * Change input for `check-utf8.cwl` from single file to directory of files
-* Change input for `delete-empty-files.cwl` from directory to list of files 
+* Change input for `delete-empty-files.cwl` from directory to list of files
 * Update method for saving workflows (requires scriptcwl >= 0.8.0)
 
 ## 0.3.2
