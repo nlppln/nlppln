@@ -21,10 +21,11 @@ arguments:
 inputs:
   in_files:
     type: File[]
-  out_file:
+  out_name:
     type: string
+    default: text_stats.csv
     inputBinding:
-      position: 3
+      prefix: --name
 
 outputs:
   metadata_out:

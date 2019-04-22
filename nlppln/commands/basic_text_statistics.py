@@ -5,14 +5,15 @@ import json
 import os
 import pandas as pd
 
-from nlppln.utils import create_dirs, get_files
+from nlppln.utils import create_dirs, get_files, out_file_name
 
 
 @click.command()
 @click.argument('in_dir', type=click.Path(exists=True))
-@click.argument('meta_out', type=click.Path())
-def basic_text_statistics(in_dir, meta_out):
-    create_dirs(meta_out)
+@click.option('--out_dir', '-o', default=os.getcwd(), type=click.Path())
+@click.option('--name', '-n', default='text_stats.csv')
+def basic_text_statistics(in_dir, out_dir, name):
+    create_dirs(out_dir)
 
     d = {'num_words': [], 'num_sentences': []}
 
@@ -32,6 +33,7 @@ def basic_text_statistics(in_dir, meta_out):
         d['num_sentences'].append(num_sentences)
 
     df = pd.DataFrame(d, index=text_names)
+    meta_out = out_file_name(out_dir, name)
     df.to_csv(meta_out, encoding='utf-8')
 
 
